@@ -1,0 +1,7 @@
+# ninja log v5
+0	703	1619641828	CMakeFiles/rune_vm_loader.dir/jni.cpp.o	b6b3e56698be2a97
+2	931	1619641891	CMakeFiles/rune_vm_loader.dir/jni.cpp.o	7b0de011dca11b43
+1	1752	1619641892	CMakeFiles/rune_vm_loader.dir/Users/geerttrooskens/dev/src/runevm_fl/cpp/runic.cpp.o	82478b6164be54fc
+1753	1856	1619641892	/Users/geerttrooskens/dev/src/runevm_fl/example/build/runevm_fl/intermediates/cmake/debug/obj/arm64-v8a/librune_vm_loader.so	a4ae7a3326886b38
+1	878	1619642220	CMakeFiles/rune_vm_loader.dir/jni.cpp.o	7b0de011dca11b43
+878	979	1619642221	/Users/geerttrooskens/dev/src/runevm_fl/example/build/runevm_fl/intermediates/cmake/debug/obj/arm64-v8a/librune_vm_loader.so	a4ae7a3326886b38

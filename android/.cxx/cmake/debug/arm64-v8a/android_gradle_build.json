@@ -1,0 +1,56 @@
+{
+  "stringTable": {
+    "0": "/Users/geerttrooskens/dev/src/runevm_fl/android/.cxx/cmake/debug/arm64-v8a",
+    "1": "--target=aarch64-none-linux-android21 --gcc-toolchain=/Users/geerttrooskens/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/geerttrooskens/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Drune_vm_loader_EXPORTS -I/Users/geerttrooskens/dev/src/runevm_fl/android/src/main/cpp/../../../install-android-rel-arm64-v8a/include -I/Users/geerttrooskens/dev/src/runevm_fl/android/src/main/cpp/../../../../cpp -I/Users/geerttrooskens/dev/src/runevm_fl/android/src/main/cpp/../../../../extern/fmt/include -Werror=return-type -O0 -fno-limit-debug-info -fPIC -std=gnu++1z"
+  },
+  "buildFiles": [
+    "/Users/geerttrooskens/dev/src/runevm_fl/android/src/main/cpp/CMakeLists.txt",
+    "/Users/geerttrooskens/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/geerttrooskens/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/geerttrooskens/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/geerttrooskens/dev/src/runevm_fl/android/.cxx/cmake/debug/arm64-v8a\" clean"
+  ],
+  "buildTargetsCommand": "/Users/geerttrooskens/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/geerttrooskens/dev/src/runevm_fl/android/.cxx/cmake/debug/arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "rune_vm_loader-Debug-arm64-v8a": {
+      "buildCommand": "/Users/geerttrooskens/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/geerttrooskens/dev/src/runevm_fl/android/.cxx/cmake/debug/arm64-v8a\" rune_vm_loader",
+      "buildType": "debug",
+      "toolchain": "1911719558",
+      "abi": "arm64-v8a",
+      "artifactName": "rune_vm_loader",
+      "files": [
+        {
+          "src": "/Users/geerttrooskens/dev/src/runevm_fl/android/src/main/cpp/jni.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/Users/geerttrooskens/dev/src/runevm_fl/cpp/runic.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [
+        {
+          "header": "/Users/geerttrooskens/dev/src/runevm_fl/cpp/runic.hpp",
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "output": "/Users/geerttrooskens/dev/src/runevm_fl/example/build/runevm_fl/intermediates/cmake/debug/obj/arm64-v8a/librune_vm_loader.so",
+      "runtimeFiles": [
+        "/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so",
+        "/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/libtensorflowlite_c.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "1911719558": {
+      "cppCompilerExecutable": "/Users/geerttrooskens/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

@@ -10,10 +10,11 @@ import io.flutter.plugin.common.MethodChannel.Result
 
 /** RunevmFlPlugin */
 class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
+
+  companion object {
+    var wasmBytes:ByteArray = ByteArray(0);
+  }
+
   private lateinit var channel : MethodChannel
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -22,14 +23,52 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else {
-      result.notImplemented()
+    if (call.method == "loadWASM") {
+      val wasmBytes = call.arguments as ByteArray
+      println(wasmBytes.size)
+      loadWASM(call, result, wasmBytes)
     }
+    if (call.method == "getManifest") {
+      getManifest(call, result)
+    }
+    if (call.method == "runRune") {
+      runRune(call, result)
+    }
+  }
+
+  init {
+    System.loadLibrary("rune_vm_loader")
+  }
+
+  private fun loadWASM(call: MethodCall, result:Result, bytes: ByteArray) {
+    wasmBytes = bytes;
+    return result.success(true) ;
+  }
+
+  private fun getManifest(call: MethodCall, result:Result) {
+    val getManifestResult = this.getManifest(wasmBytes);
+    if(getManifestResult == null) {
+      result.error("0", "Failed to get manifest", null)
+    }
+
+    return result.success(getManifestResult!!)
+  }
+
+  private fun runRune(call: MethodCall, result:Result) {
+    //runRune SDK functions
+    val runRuneResult = this.runRune(call.arguments as ByteArray)
+    if(runRuneResult == null) {
+      result.error("0", "Failed to run rune", null)
+    }
+
+    return result.success(runRuneResult!!)
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
   }
+
+  //declare SDK functions
+  private external fun getManifest(wasm: ByteArray): IntArray?
+  private external fun runRune(input: ByteArray): String?
 }
