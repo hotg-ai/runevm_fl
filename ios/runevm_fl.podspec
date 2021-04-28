@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Classes/**/*.h'
   s.xcconfig = { 
     'LIBRARY_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/install-ios-rel/lib/"', 
-    'HEADER_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/install-ios-rel/include/" "${PODS_TARGET_SRCROOT}/../extern/rune_vm/extern/fmt/include/"',
+    'HEADER_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/install-ios-rel/include/" "${PODS_TARGET_SRCROOT}/../extern/fmt/include/"',
     'CLANG_CXX_LANGUAGE_STANDARD' => 'c++17',
     'CLANG_CXX_LIBRARY' => 'libc++'
   }
