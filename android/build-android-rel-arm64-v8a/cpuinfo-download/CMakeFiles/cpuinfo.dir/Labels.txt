@@ -1,0 +1,14 @@
+# Target labels
+ cpuinfo
+# Source files and their labels
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/CMakeFiles/cpuinfo
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/CMakeFiles/cpuinfo.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/CMakeFiles/cpuinfo-complete.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-build.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-configure.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-download.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-install.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-mkdir.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-patch.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-test.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/cpuinfo-download/cpuinfo-prefix/src/cpuinfo-stamp/cpuinfo-update.rule

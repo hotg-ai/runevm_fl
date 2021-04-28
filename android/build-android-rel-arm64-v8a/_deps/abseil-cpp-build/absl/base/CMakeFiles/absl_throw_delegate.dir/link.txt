@@ -1,0 +1,2 @@
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc libabsl_throw_delegate.a CMakeFiles/absl_throw_delegate.dir/internal/throw_delegate.cc.o
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib libabsl_throw_delegate.a

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/CMakeFiles/fp16"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/CMakeFiles/fp16.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/CMakeFiles/fp16-complete.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-build.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-configure.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-download.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-install.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-mkdir.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-patch.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-test.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/FP16-download/fp16-prefix/src/fp16-stamp/fp16-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"fp16"
+		],
+		"name" : "fp16"
+	}
+}

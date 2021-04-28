@@ -1,0 +1,4 @@
+Name: nlohmann_json
+Description: JSON for Modern C++
+Version: 3.9.1
+Cflags: -I/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/include

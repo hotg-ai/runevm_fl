@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/CMakeFiles/pthreadpool"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/CMakeFiles/pthreadpool.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/CMakeFiles/pthreadpool-complete.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-build.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-configure.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-download.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-install.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-mkdir.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-patch.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-test.rule"
+		},
+		{
+			"file" : "/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pthreadpool"
+		],
+		"name" : "pthreadpool"
+	}
+}

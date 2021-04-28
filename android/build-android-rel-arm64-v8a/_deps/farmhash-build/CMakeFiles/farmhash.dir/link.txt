@@ -1,0 +1,2 @@
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc libfarmhash.a CMakeFiles/farmhash.dir/__/__/farmhash/src/farmhash.cc.o
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib libfarmhash.a

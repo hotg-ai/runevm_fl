@@ -1,0 +1,2 @@
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc librune_vm_wasm_backend_impl.a CMakeFiles/rune_vm_wasm_backend_impl.dir/Wasm3Common.cpp.o CMakeFiles/rune_vm_wasm_backend_impl.dir/Wasm3Engine.cpp.o CMakeFiles/rune_vm_wasm_backend_impl.dir/Wasm3Runtime.cpp.o CMakeFiles/rune_vm_wasm_backend_impl.dir/Wasm3Rune.cpp.o
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib librune_vm_wasm_backend_impl.a

@@ -1,0 +1,13 @@
+# Target labels
+ flatbuffers-flatc
+# Source files and their labels
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/extern/tensorflow/tensorflow/lite/c/tensorflow-lite/CMakeFiles/flatbuffers-flatc
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/extern/tensorflow/tensorflow/lite/c/tensorflow-lite/CMakeFiles/flatbuffers-flatc.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/extern/tensorflow/tensorflow/lite/c/tensorflow-lite/CMakeFiles/flatbuffers-flatc-complete.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-build.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-configure.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-download.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-install.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-mkdir.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-patch.rule
+/Users/geerttrooskens/dev/src/runevm_fl/android/build-android-rel-arm64-v8a/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-update.rule

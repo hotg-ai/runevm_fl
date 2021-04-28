@@ -1,0 +1,2 @@
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc libabsl_hashtablez_sampler.a CMakeFiles/absl_hashtablez_sampler.dir/internal/hashtablez_sampler.cc.o CMakeFiles/absl_hashtablez_sampler.dir/internal/hashtablez_sampler_force_weak_definition.cc.o
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib libabsl_hashtablez_sampler.a

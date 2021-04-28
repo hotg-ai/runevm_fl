@@ -1,0 +1,7 @@
+/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so
+/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/libtensorflowlite_c.so
+/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/VirtualInterface.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/Capabilities.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/Log.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/RuneVm.hpp

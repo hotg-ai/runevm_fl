@@ -1,0 +1,13 @@
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/librune_vm_wasm_backend_impl.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/librune_vm_capabilities_delegates.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/librune_vm_capabilities.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/librune_vm_inference_backend.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/librune_vm_inference_backend_impl.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/librune_vm.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/libm3.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/lib/libfmt.a
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/include/rune_vm/VirtualInterface.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/include/rune_vm/DataView.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/include/rune_vm/Capabilities.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/include/rune_vm/Log.hpp
+/Users/geerttrooskens/dev/src/runevm_fl/ios/install-ios-rel/include/rune_vm/RuneVm.hpp

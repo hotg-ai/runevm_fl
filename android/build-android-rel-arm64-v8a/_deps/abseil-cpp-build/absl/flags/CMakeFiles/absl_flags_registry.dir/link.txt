@@ -1,0 +1,2 @@
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc libabsl_flags_registry.a CMakeFiles/absl_flags_registry.dir/internal/registry.cc.o CMakeFiles/absl_flags_registry.dir/internal/type_erased.cc.o
+/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib libabsl_flags_registry.a
