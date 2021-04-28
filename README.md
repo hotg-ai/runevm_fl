@@ -1,2 +1,4 @@
 # runevm_fl
- RuneVM for Flutter
+ RuneVM plugin for Flutter
+
+ Example app is the game 2048 with voice control
