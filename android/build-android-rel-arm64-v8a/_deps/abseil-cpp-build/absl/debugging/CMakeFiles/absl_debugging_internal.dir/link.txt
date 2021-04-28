@@ -1,2 +1,0 @@
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc libabsl_debugging_internal.a CMakeFiles/absl_debugging_internal.dir/internal/address_is_readable.cc.o CMakeFiles/absl_debugging_internal.dir/internal/elf_mem_image.cc.o CMakeFiles/absl_debugging_internal.dir/internal/vdso_support.cc.o
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib libabsl_debugging_internal.a

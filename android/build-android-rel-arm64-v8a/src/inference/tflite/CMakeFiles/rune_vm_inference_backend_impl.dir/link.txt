@@ -1,2 +1,0 @@
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc librune_vm_inference_backend_impl.a CMakeFiles/rune_vm_inference_backend_impl.dir/TfLiteRuntime.cpp.o
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib librune_vm_inference_backend_impl.a

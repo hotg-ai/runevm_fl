@@ -1,2 +1,0 @@
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc libfft2d_alloc.a CMakeFiles/fft2d_alloc.dir/__/__/fft2d/alloc.c.o
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib libfft2d_alloc.a

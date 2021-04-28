@@ -1,2 +1,0 @@
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar qc libabsl_base.a CMakeFiles/absl_base.dir/internal/cycleclock.cc.o CMakeFiles/absl_base.dir/internal/spinlock.cc.o CMakeFiles/absl_base.dir/internal/sysinfo.cc.o CMakeFiles/absl_base.dir/internal/thread_identity.cc.o CMakeFiles/absl_base.dir/internal/unscaledcycleclock.cc.o
-/Users/geerttrooskens/dev/android-ndk-r21b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ranlib libabsl_base.a

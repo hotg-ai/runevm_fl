@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/fast-cpp-csv-parser" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/fmt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/gtest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/json" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/mio" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/polly" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/polly/docs/rtfd-css" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/tensorflow" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/extern/rune_vm/extern/wasm3" vcs="Git" />
+  </component>
+</project>
