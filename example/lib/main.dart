@@ -6,7 +6,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:runevm_fl/runevm_fl.dart';
 
-import '2048/home.dart';
+import '2048/home_mobile.dart' if (dart.library.js) '2048/home_web.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion = "none";
+    /*String platformVersion = "none";
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _platformVersion = platformVersion;
       print("RuneVM: $_platformVersion");
-    });
+    });*/
   }
 
   @override

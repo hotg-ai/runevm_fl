@@ -24,21 +24,22 @@ class RunevmFlWeb {
   /// Handles method calls over the MethodChannel of this plugin.
   /// Note: Check the "federated" architecture for a new way of doing this:
   /// https://flutter.dev/go/federated-plugins
+  ///
+  /// Returning dummy values for now
   Future<dynamic> handleMethodCall(MethodCall call) async {
+    print("calling ${call.method}");
     switch (call.method) {
-      case 'getPlatformVersion':
-        return getPlatformVersion();
+      case 'loadWASM':
+        return true;
+      case 'manifest':
+        return [2];
+      case 'runRune':
+        return '{"type_name":"&str","channel":0,"string":"yes"}';
       default:
         throw PlatformException(
           code: 'Unimplemented',
           details: 'runevm_fl for web doesn\'t implement \'${call.method}\'',
         );
     }
-  }
-
-  /// Returns a [String] containing the version of the platform.
-  Future<String> getPlatformVersion() {
-    final version = html.window.navigator.userAgent;
-    return Future.value(version);
   }
 }
