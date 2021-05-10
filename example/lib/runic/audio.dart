@@ -27,11 +27,13 @@ class Audio {
     initRune();
   }
 
+  ByteData? bytes;
+
   initRune() async {
     try {
-      ByteData bytes = await rootBundle.load('assets/microspeech.rune');
+      bytes = await rootBundle.load('assets/microspeech.rune');
       bool loaded =
-          await RunevmFl.loadWASM(bytes.buffer.asUint8List()) ?? false;
+          await RunevmFl.loadWASM(bytes!.buffer.asUint8List()) ?? false;
       if (loaded) {
         String manifest = (await RunevmFl.manifest).toString();
         print("Manifest loaded: $manifest");
@@ -50,16 +52,12 @@ class Audio {
 
   List<int> to16bit(List<int> input) {
     List<int> out = [];
-    /*for(int i = 0;i<input.length;i+=2) {
-      Uint8List bytes = Uint8List.fromList(
-          input.sublist(i, i + 2).reversed.toList());
-      print("<<<$bytes>>>");
-    }*/
-    out = Uint8List.fromList(input).buffer.asInt16List();
+    out = Uint8List.fromList(input).buffer.asInt16List().toList();
     return out;
   }
 
   bool runningModel = false;
+  int counter = 0;
   startRecording() async {
     if (stream == null) {
       await initRecording();
@@ -67,47 +65,55 @@ class Audio {
     if (await Permission.microphone.request().isGranted) {
       bits = await MicStream.bitDepth;
       print("Start recording");
-      int streamCounter = 0;
-
+      for (StreamSubscription<List<int>> streamSub in _streamSubscriptions) {
+        await streamSub.cancel();
+      }
       if (stream != null) {
         _streamSubscriptions.add(stream?.listen((List<int> samples) async {
-          if (!runningModel) {
-            List<int> stream = to16bit(samples);
-            stepCounter++;
-            _buffer.addAll(stream);
-            _stepBuffer.addAll(samples);
-            while (_stepBuffer.length > this.stepSize) {
-              _stepBuffer.removeAt(0);
-            }
-            while (_buffer.length > this.bufferLength) {
-              _buffer.removeAt(0);
-            }
+          List<int> stream = to16bit(samples);
 
-            if (_stepBuffer.length == this.stepSize) {
-              try {
-                if (!runningModel) {
-                  runningModel = true;
-                  String? output =
-                      await RunevmFl.runRune(Uint8List.fromList(_stepBuffer));
-                  print("Rune Output: $output ${_stepBuffer.sublist(0, 10)}");
-                  onStep(output);
-                  runningModel = false;
-                }
-              } catch (e) {
-                print("Error running rune: $e");
-              }
+          _buffer.addAll(stream);
+          _stepBuffer.addAll(samples);
 
-              _stepBuffer = [];
-            } else {
-              if (_buffer.length == this.bufferLength) {
-                onStep(null);
-              }
+          if (_stepBuffer.length > this.stepSize) {
+            _stepBuffer =
+                _stepBuffer.sublist(_stepBuffer.length - this.stepSize);
+          }
+          if (_buffer.length > this.bufferLength) {
+            _buffer = _buffer.sublist(_buffer.length - this.bufferLength);
+          }
+          //print(
+          //    "${_stepBuffer.length} ${this.stepSize} ${_buffer.length} ${this.bufferLength}");
+
+          if (_stepBuffer.length == this.stepSize) {
+            counter++;
+            if (!runningModel) {
+              await run(_stepBuffer);
+            }
+          } else {
+            if (_buffer.length == this.bufferLength) {
+              onStep(null);
             }
           }
         }));
       }
     } else {
       print("No recording permission");
+    }
+  }
+
+  run(List<int> stepBuffer) async {
+    try {
+      runningModel = true;
+      String? output = await RunevmFl.runRune(Uint8List.fromList(stepBuffer));
+      //String? output = '{"type_name": "&str", "channel": 0, "string": "down"}';
+      print("Rune Output: $output ${_stepBuffer.sublist(0, 10)}");
+      onStep(output);
+
+      runningModel = false;
+      _stepBuffer = [];
+    } catch (e) {
+      print("Error running rune: $e");
     }
   }
 

@@ -34,9 +34,46 @@ class _HomePageState extends State<HomePage> {
     addNumber(grid, gridNew);
     addNumber(grid, gridNew);
     super.initState();
-    _audio.onStep = (String? output) {
+    _audio.onStep = (String? output) async {
       if (output != null) {
         lastCommand = jsonDecode(output)["string"];
+        /*
+    
+        0 = up
+        1 = down
+        2 = left
+        3 = right
+
+        */
+        switch (lastCommand) {
+          case "up":
+            {
+              handleGesture(0);
+            }
+            break;
+
+          case "down":
+            {
+              handleGesture(1);
+            }
+            break;
+
+          case "left":
+            {
+              handleGesture(2);
+            }
+            break;
+          case "right":
+            {
+              handleGesture(3);
+            }
+            break;
+          default:
+            {
+              //nothing
+            }
+            break;
+        }
       }
       setState(() {});
     };
