@@ -36,7 +36,7 @@ Future<String> RunevmFl.runRune(Uint8List input)
 
 #### Implementation
 
-Full implementatoin in [main.dart](lib/main.dart)
+Full implementation in [main.dart](example/lib/main.dart)
 
 ```dart
 
