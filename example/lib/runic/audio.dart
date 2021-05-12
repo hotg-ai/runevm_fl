@@ -32,8 +32,7 @@ class Audio {
   initRune() async {
     try {
       bytes = await rootBundle.load('assets/microspeech.rune');
-      bool loaded =
-          await RunevmFl.loadWASM(bytes!.buffer.asUint8List()) ?? false;
+      bool loaded = await RunevmFl.load(bytes!.buffer.asUint8List()) ?? false;
       if (loaded) {
         String manifest = (await RunevmFl.manifest).toString();
         print("Manifest loaded: $manifest");

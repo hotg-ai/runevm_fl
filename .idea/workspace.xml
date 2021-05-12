@@ -19,24 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/android/src/main/cpp/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/cpp/jni.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cpp/runic.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cpp/runic.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/cpp/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/cpp/jni.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/cpp/runic.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/cpp/runic.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/ai/hotg/runevm_fl/RunevmFlPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/ai/hotg/runevm_fl/RunevmFlPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/kotlin/ai/hotg/runevm_fl/RunevmFlPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/kotlin/ai/hotg/runevm_fl/RunevmFlPlugin.kt" afterDir="false" />
-    </list>
+    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

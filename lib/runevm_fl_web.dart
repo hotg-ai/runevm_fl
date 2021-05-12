@@ -29,7 +29,7 @@ class RunevmFlWeb {
   Future<dynamic> handleMethodCall(MethodCall call) async {
     print("calling ${call.method}");
     switch (call.method) {
-      case 'loadWASM':
+      case 'load':
         return true;
       case 'manifest':
         return [2];

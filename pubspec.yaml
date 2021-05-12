@@ -32,6 +32,7 @@ flutter:
         package: ai.hotg.runevm_fl
         pluginClass: RunevmFlPlugin
       ios:
+        package: ai.hotg.runevm_fl
         pluginClass: RunevmFlPlugin
       web:
         pluginClass: RunevmFlWeb

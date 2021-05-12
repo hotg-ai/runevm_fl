@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 class RunevmFl {
   static const MethodChannel _channel = const MethodChannel('runevm_fl');
 
-  static Future<bool?> loadWASM(Uint8List bytes) async {
+  static Future<bool?> load(Uint8List bytes) async {
     final bool? reply = await _channel.invokeMethod('loadWASM', bytes);
     return reply;
   }
