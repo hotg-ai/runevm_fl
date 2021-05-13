@@ -11,9 +11,7 @@
 dependencies:
   flutter:
     sdk: flutter
-  runevm_fl:
-    git:
-      url: https://github.com/hotg-ai/runevm_fl.git 
+  runevm_fl: ^0.1.2
 
 ```
 

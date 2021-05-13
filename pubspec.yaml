@@ -1,9 +1,9 @@
 name: runevm_fl
-version: 0.1.1
+version: 0.1.3
 description: >-
   Rune Virtual Machine for Flutter
   Containerization for TinyML/Mobile Applications on Tiny/Mobile devices.
-homepage: https://hotg.ai
+homepage: https://hotg.dev
 repository: https://github.com/hotg-ai/runevm_fl
 
 environment:
