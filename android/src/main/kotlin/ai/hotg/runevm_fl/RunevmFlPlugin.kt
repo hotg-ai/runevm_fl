@@ -69,6 +69,6 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   //declare SDK functions
-  private external fun getManifest(wasm: ByteArray): IntArray?
+  private external fun getManifest(wasm: ByteArray): String?
   private external fun runRune(input: ByteArray): String?
 }

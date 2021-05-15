@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '2048/home_mobile.dart' if (dart.library.js) '2048/home_web.dart';

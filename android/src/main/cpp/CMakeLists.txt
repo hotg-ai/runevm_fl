@@ -60,4 +60,5 @@ target_include_directories(
     ${RUNE_VM_INSTALL_DIR}/include
     ${RUNIC_MOBILE_COMMON_CPP_DIR}
     ${RUNE_VM_SUBMODULE_DIR}/fmt/include
+    ${RUNE_VM_SUBMODULE_DIR}
 )

@@ -100,26 +100,17 @@ JNI_OnLoad(JavaVM* vm, void* reserved)
     return JNI_VERSION_1_6;
 }
 
-JNIEXPORT jintArray JNICALL
+JNIEXPORT jstring JNICALL
 Java_ai_hotg_runevm_1fl_RunevmFlPlugin_getManifest(JNIEnv *env, jobject thiz, jbyteArray wasm) {
     const auto optData = getDataFromJArray(env, wasm);
     if(!optData)
         return NULL;
 
-    const auto optCapabilities = runic_common::manifest(
-        optData->data(),
-        optData->size(),
-        true);
-    if(!optCapabilities)
+    const auto optJson = runic_common::manifest(optData->data(), optData->size(), true);
+    if(!optJson)
         return NULL;
 
-    const auto jCapabilities = env->NewIntArray(optCapabilities->size());
-    if(!jCapabilities)
-        return NULL;
-
-    env->SetIntArrayRegion(jCapabilities, 0, optCapabilities->size(), optCapabilities->data());
-
-    return jCapabilities;
+    return env->NewStringUTF(optJson->c_str());
 }
 
 JNIEXPORT jstring JNICALL
