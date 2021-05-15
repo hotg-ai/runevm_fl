@@ -13,9 +13,23 @@
 #include <vector>
 
 #include <fmt/format.h>
+#include <nlohmann/json.hpp>
 #include <rune_vm/RuneVm.hpp>
 
 #include "runic.hpp"
+
+template <>
+struct fmt::formatter<rune_vm::capabilities::Parameter> : fmt::formatter<std::string> {
+    template <typename FormatContext>
+    auto format(const rune_vm::capabilities::Parameter& param, FormatContext& ctx) {
+        return std::visit(
+            [&ctx](const auto& parameter) {
+                return format_to(ctx.out(), "{}", parameter);
+            },
+            param.m_data);
+
+    }
+};
 
 namespace {
     struct StdoutLogger : public rune_vm::ILogger {
@@ -144,10 +158,6 @@ namespace {
             return m_delegate;
         }
         
-        void releaseRune() noexcept {
-            m_rune.reset();
-        }
-        
         bool loadRune(const uint8_t* data, const uint32_t length) noexcept {
             try {
                 m_rune.reset();
@@ -205,19 +215,9 @@ namespace {
                 return nullptr;
             }
         }
-        
-        std::vector<rune_vm::capabilities::Capability> getRequestedCapabilities() const {
-            auto capabilities = std::vector<rune_vm::capabilities::Capability>();
-            const auto capabilityData = m_rune->getCapabilitiesContext()->getCapabilityIdToDataMap();
-            
-            capabilities.reserve(capabilityData.size());
-            std::transform(
-                capabilityData.begin(),
-                capabilityData.end(),
-                std::back_inserter(capabilities),
-                [](const auto& elem) { return elem.second.m_capability; });
-            
-            return capabilities;
+
+        rune_vm::capabilities::IContext::TCapabilityIdToDataMap getCapabilityIdToDataMap() const {
+            return m_rune->getCapabilitiesContext()->getCapabilityIdToDataMap();
         }
         
     private:
@@ -233,7 +233,7 @@ namespace {
     static auto g_context = RuneVmContext(std::make_shared<StdoutLogger>());
 
     // this is done to not fight with strange internal state errors
-    bool resetContext(rune_vm::ILogger::CPtr logger) {
+    bool resetContext(rune_vm::ILogger::CPtr logger) noexcept {
         g_context.log().log(rune_vm::Severity::Info, "Resetting rune_vm context");
         if(!logger) {
             g_context.log().log(rune_vm::Severity::Error, "resetContext: null logger was passed");
@@ -260,7 +260,7 @@ bool setLogger(rune_vm::ILogger::Ptr logger) noexcept {
     return resetContext(std::move(logger));
 }
 
-std::optional<std::vector<int32_t>> manifest(const uint8_t* app_rune, int app_rune_len, bool newManifest) noexcept {
+std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, bool) noexcept {
     g_context.log().log(rune_vm::Severity::Info, fmt::format("manifest called: rune len={}", app_rune_len));
     
     // reset context to avoid wasm3 internal state errors
@@ -274,28 +274,50 @@ std::optional<std::vector<int32_t>> manifest(const uint8_t* app_rune, int app_ru
         g_context.log().log(rune_vm::Severity::Error, "Failed to load rune");
         return std::nullopt;
     }
-    
-    auto requestedCapabilities = std::vector<rune_vm::capabilities::Capability>();
-    auto capabilities = std::vector<int32_t>();
-    
+
     try {
-        requestedCapabilities = g_context.getRequestedCapabilities();
-        capabilities.reserve(requestedCapabilities.size());
+        const auto& capabilitiesDataMap = g_context.getCapabilityIdToDataMap();
+
+        // prepare json capabilities description
+        auto json = nlohmann::json::array();
+
+        std::transform(
+            capabilitiesDataMap.begin(),
+            capabilitiesDataMap.end(),
+            std::back_inserter(json),
+            [](const auto& pair) {
+                const auto& [id, data] = pair;
+                auto paramsJson = nlohmann::json::array();
+
+                std::transform(
+                    data.m_parameters.begin(),
+                    data.m_parameters.end(),
+                    std::back_inserter(paramsJson),
+                    [](const auto& pair) {
+                        const auto& [key, parameter] = pair;
+
+                        return nlohmann::json({
+                            {"key", key},
+                            {"value", fmt::format("{}", parameter)}
+                        });
+                    });
+
+                // + 1 because that translates enum to rune_interop value
+                return nlohmann::json({
+                    {"capability", static_cast<uint32_t>(data.m_capability) + 1},
+                    {"parameters", std::move(paramsJson)}});
+            });
+
+        const auto jsonStr = json.dump();
+        g_context.log().log(rune_vm::Severity::Info, fmt::format("manifest() output={}", jsonStr));
+
+        return jsonStr;
     } catch(const std::exception& e) {
-        g_context.log().log(rune_vm::Severity::Error, fmt::format("Failed to reserve vector: {}", e.what()));
+        g_context.log().log(rune_vm::Severity::Error, fmt::format("Failed to prepare json: {}", e.what()));
+        // if we failed to construct manifest json there's no point in keeping context alive
+        resetContext(g_context.log().logger());
         return std::nullopt;
     }
-    
-    std::transform(
-        requestedCapabilities.begin(),
-        requestedCapabilities.end(),
-        std::back_inserter(capabilities),
-        [](const auto capability) {
-            // + 1 because that translates enum to rune_interop value
-            return static_cast<uint32_t>(capability) + 1;
-        });
-    
-    return capabilities;
 }
 
 std::optional<std::string> callRune(uint8_t *input, int input_length) noexcept {
