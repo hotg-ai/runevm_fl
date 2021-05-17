@@ -1,2 +1,0 @@
-ninja: Entering directory `/Users/geerttrooskens/dev/src/runevm_fl/android/.cxx/cmake/debug/arm64-v8a'
-ninja: no work to do.

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,7 +22,104 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="" />
+    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/abi_configuration_3f421w4c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/abi_configuration_3f421w4c.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/abi_configuration_3f421w4c_key.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/abi_configuration_54116u2d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/abi_configuration_54116u2d.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/abi_configuration_54116u2d_key.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/feature_tests.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/feature_tests.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/feature_tests.cxx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rune_vm_loader.dir/Users/geerttrooskens/dev/src/runevm_fl/cpp/runic.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rune_vm_loader.dir/jni.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_mini.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_rune_vm_loader_arm64-v8a.command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_rune_vm_loader_arm64-v8a.stderr.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_rune_vm_loader_arm64-v8a.stdout.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/build_command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/build_model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/build_output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/cmake_server_log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/compile_commands.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/json_generation_record.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/prefab_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndk_locator_record_1l4r3h4e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndk_locator_record_1l4r3h4e.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndk_locator_record_1l4r3h4e_key.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/assets/microspeech.rune" beforeDir="false" afterPath="$PROJECT_DIR$/example/assets/microspeech.rune" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/assets/microspeech_old.rune" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/abi_configuration_3f421w4c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/abi_configuration_3f421w4c.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/abi_configuration_3f421w4c_key.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/abi_configuration_54116u2d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/abi_configuration_54116u2d.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/abi_configuration_54116u2d_key.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/3.10.2/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/feature_tests.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/feature_tests.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/feature_tests.cxx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rune_vm_loader.dir/Users/geerttrooskens/dev/src/runevm_fl/cpp/runic.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rune_vm_loader.dir/jni.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_mini.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_rune_vm_loader_arm64-v8a.command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_rune_vm_loader_arm64-v8a.stderr.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/android_gradle_build_rune_vm_loader_arm64-v8a.stdout.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/build_command.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/build_model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/build_output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/cmake_server_log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/compile_commands.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/json_generation_record.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/prefab_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/cmake/debug/arm64-v8a/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/ndk_locator_record_1l4r3h4e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/ndk_locator_record_1l4r3h4e.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/.cxx/ndk_locator_record_1l4r3h4e_key.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/assets/microspeech.rune" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/assets/microspeech.rune" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/assets/microspeech_old.rune" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +146,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -72,21 +173,29 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1309" height="267" key="GridCell.Tab.0.bottom" timestamp="1619642269005">
+    <state x="2443" y="279" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1621250026250">
       <screen x="1920" y="25" width="1920" height="1055" />
     </state>
+    <state x="2443" y="279" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.25.1920.990/1920.25.1920.1055@1920.25.1920.1055" timestamp="1621250026250" />
+    <state width="1309" height="267" key="GridCell.Tab.0.bottom" timestamp="1621251325066">
+      <screen x="1920" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1309" height="267" key="GridCell.Tab.0.bottom/0.25.1920.990/1920.25.1920.1055@1920.25.1920.1055" timestamp="1621251325066" />
     <state width="1309" height="267" key="GridCell.Tab.0.bottom/0.25.1920.996/1920.25.1920.1055@1920.25.1920.1055" timestamp="1619642269005" />
-    <state width="1309" height="267" key="GridCell.Tab.0.center" timestamp="1619642269004">
+    <state width="1309" height="267" key="GridCell.Tab.0.center" timestamp="1621251325065">
       <screen x="1920" y="25" width="1920" height="1055" />
     </state>
+    <state width="1309" height="267" key="GridCell.Tab.0.center/0.25.1920.990/1920.25.1920.1055@1920.25.1920.1055" timestamp="1621251325065" />
     <state width="1309" height="267" key="GridCell.Tab.0.center/0.25.1920.996/1920.25.1920.1055@1920.25.1920.1055" timestamp="1619642269004" />
-    <state width="1309" height="267" key="GridCell.Tab.0.left" timestamp="1619642269004">
+    <state width="1309" height="267" key="GridCell.Tab.0.left" timestamp="1621251325064">
       <screen x="1920" y="25" width="1920" height="1055" />
     </state>
+    <state width="1309" height="267" key="GridCell.Tab.0.left/0.25.1920.990/1920.25.1920.1055@1920.25.1920.1055" timestamp="1621251325064" />
     <state width="1309" height="267" key="GridCell.Tab.0.left/0.25.1920.996/1920.25.1920.1055@1920.25.1920.1055" timestamp="1619642269004" />
-    <state width="1309" height="267" key="GridCell.Tab.0.right" timestamp="1619642269004">
+    <state width="1309" height="267" key="GridCell.Tab.0.right" timestamp="1621251325065">
       <screen x="1920" y="25" width="1920" height="1055" />
     </state>
+    <state width="1309" height="267" key="GridCell.Tab.0.right/0.25.1920.990/1920.25.1920.1055@1920.25.1920.1055" timestamp="1621251325065" />
     <state width="1309" height="267" key="GridCell.Tab.0.right/0.25.1920.996/1920.25.1920.1055@1920.25.1920.1055" timestamp="1619642269004" />
   </component>
 </project>

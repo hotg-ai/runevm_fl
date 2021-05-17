@@ -1,5 +1,5 @@
 name: runevm_fl
-version: 0.1.3
+version: 0.1.4
 description: >-
   Rune Virtual Machine for Flutter
   Containerization for TinyML/Mobile Applications on Tiny/Mobile devices.
