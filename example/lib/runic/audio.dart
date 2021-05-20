@@ -1,5 +1,7 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'dart:convert';
+import 'dart:ffi';
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:mic_stream/mic_stream.dart';
@@ -16,14 +18,24 @@ class Audio {
   Function onStep = (String? buffer) {};
   Stream<List<int>>? stream;
   List _streamSubscriptions = [];
-  List<int> _stepBuffer = [];
   int? bits;
   List<int> _buffer = [];
+  double amplitude = 0;
+  bool freeze = false;
   List<int> getBuffer() {
-    return _buffer;
+    return _buffer.toList();
   }
 
-  Audio({this.bufferLength = 1200, this.stepSize = 32000}) {
+  setAmplitude() {
+    List<int> buf = getBuffer();
+    amplitude = buf
+            .sublist((buf.length / 4).round(), (buf.length * 3 / 4).round())
+            .reduce((a, b) => (a.abs() + b.abs())) /
+        getBuffer().length /
+        5;
+  }
+
+  Audio({this.bufferLength = 16000, this.stepSize = 32000}) {
     initRune();
   }
 
@@ -49,6 +61,19 @@ class Audio {
         audioFormat: AudioFormat.ENCODING_PCM_16BIT);
   }
 
+  /*getStepBuffer() {
+    while (_stepBuffer.length < this.stepSize) {
+      _stepBuffer.add(0);
+    }
+    return _stepBuffer;
+  }*/
+  Uint8List getStepBuffer() {
+    while (_buffer.length < this.bufferLength) {
+      _buffer.add(0);
+    }
+    return Int16List.fromList(_buffer).buffer.asUint8List();
+  }
+
   List<int> to16bit(List<int> input) {
     List<int> out = [];
     out = Uint8List.fromList(input).buffer.asInt16List().toList();
@@ -70,20 +95,28 @@ class Audio {
       if (stream != null) {
         _streamSubscriptions.add(stream?.listen((List<int> samples) async {
           List<int> stream = to16bit(samples);
-
-          _buffer.addAll(stream);
-          _stepBuffer.addAll(samples);
-
-          if (_stepBuffer.length > this.stepSize) {
-            _stepBuffer =
-                _stepBuffer.sublist(_stepBuffer.length - this.stepSize);
+          if (Platform.isIOS) {
+            for (int i = 2; i < stream.length; i += 3) {
+              _buffer.add(
+                  ((stream[i - 2] + stream[i - 1] + stream[i]) / 3).round());
+            }
+          } else {
+            _buffer.addAll(stream);
           }
+
+          /*for (int i = 1; i < stream.length; i += 2) {
+            _buffer.add(((stream[i - 1] + stream[i]) / 2).round());
+          }*/
+
           if (_buffer.length > this.bufferLength) {
             _buffer = _buffer.sublist(_buffer.length - this.bufferLength);
           }
+          if (_buffer.length == this.bufferLength) {
+            onStep(null);
+          }
           //print(
           //    "${_stepBuffer.length} ${this.stepSize} ${_buffer.length} ${this.bufferLength}");
-
+          /*
           if (_stepBuffer.length == this.stepSize) {
             counter++;
             if (!runningModel) {
@@ -93,24 +126,38 @@ class Audio {
             if (_buffer.length == this.bufferLength) {
               onStep(null);
             }
-          }
+          }*/
         }));
       }
     } else {
       print("No recording permission");
     }
+    runLoop();
+  }
+
+  runLoop() async {
+    await run(getStepBuffer());
+
+    runLoop();
   }
 
   run(List<int> stepBuffer) async {
     try {
       runningModel = true;
-      String? output = await RunevmFl.runRune(Uint8List.fromList(stepBuffer));
-      //String? output = '{"type_name": "&str", "channel": 0, "string": "down"}';
-      print("Rune Output: $output ${_stepBuffer.sublist(0, 10)}");
-      onStep(output);
+      setAmplitude();
+      if (amplitude > 80) {
+        String? output = await RunevmFl.runRune(Uint8List.fromList(stepBuffer));
+        onStep(output);
+        freeze = true;
+        await Future.delayed(const Duration(milliseconds: 1000), () {});
+        freeze = false;
+      } else {
+        onStep(
+            '{"type_name":"&str","channel":0,"elements":[""],"dimensions":[1]}');
+        await Future.delayed(const Duration(milliseconds: 100), () {});
+      }
 
       runningModel = false;
-      _stepBuffer = [];
     } catch (e) {
       print("Error running rune: $e");
     }
@@ -215,7 +262,7 @@ class Audio {
         LineChartBarData(
           spots: spotsX,
           isCurved: false,
-          colors: gradientColorsX,
+          colors: freeze ? gradientColorsY : gradientColorsX,
           barWidth: 2,
           isStrokeCapRound: true,
           dotData: FlDotData(

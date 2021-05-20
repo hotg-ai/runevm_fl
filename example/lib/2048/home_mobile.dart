@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _audio.onStep = (String? output) async {
       if (output != null) {
-        lastCommand = jsonDecode(output)["string"];
+        lastCommand = jsonDecode(output)["elements"][0];
         /*
     
         0 = up
@@ -58,12 +58,12 @@ class _HomePageState extends State<HomePage> {
             }
             break;
 
-          case "left":
+          case "right":
             {
               handleGesture(2);
             }
             break;
-          case "right":
+          case "left":
             {
               handleGesture(3);
             }
