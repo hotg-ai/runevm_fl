@@ -470,6 +470,10 @@ class _HomePageState extends State<HomePage> {
                   ]),
                 ),
               ),
+              Center(
+                  child: Text("Sample Rate: ${_audio.sampleRate}",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 8)))
             ],
           ),
         ),

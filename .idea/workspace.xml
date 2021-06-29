@@ -22,12 +22,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="" />
+    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/2048/home_mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/2048/home_mobile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/runic/audio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/runic/audio.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/2048/home_mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/2048/home_mobile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/runic/audio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/runic/audio.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/Users/geerttrooskens/.android/avd/Pixel_3a_API_30_x86.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -42,6 +51,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -100,5 +110,9 @@
     </state>
     <state width="1309" height="267" key="GridCell.Tab.0.right/0.25.1920.990/1920.25.1920.1055@1920.25.1920.1055" timestamp="1621251698985" />
     <state width="1309" height="267" key="GridCell.Tab.0.right/0.25.1920.996/1920.25.1920.1055@1920.25.1920.1055" timestamp="1619642269004" />
+    <state x="2237" y="181" key="SettingsEditor" timestamp="1623058731006">
+      <screen x="1920" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2237" y="181" key="SettingsEditor/0.25.1920.996/1920.25.1920.1055@1920.25.1920.1055" timestamp="1623058731006" />
   </component>
 </project>

@@ -22,6 +22,7 @@ class Audio {
   List<int> _buffer = [];
   double amplitude = 0;
   bool freeze = false;
+  int sampleRate = 16000;
   List<int> getBuffer() {
     return _buffer.toList();
   }
@@ -67,6 +68,7 @@ class Audio {
     }
     return _stepBuffer;
   }*/
+
   Uint8List getStepBuffer() {
     while (_buffer.length < this.bufferLength) {
       _buffer.add(0);
@@ -80,12 +82,15 @@ class Audio {
     return out;
   }
 
+  int bitcount = 0;
+  int millisecondStarted = 0;
   bool runningModel = false;
   int counter = 0;
   startRecording() async {
     if (stream == null) {
       await initRecording();
     }
+
     if (await Permission.microphone.request().isGranted) {
       bits = await MicStream.bitDepth;
       print("Start recording");
@@ -94,13 +99,40 @@ class Audio {
       }
       if (stream != null) {
         _streamSubscriptions.add(stream?.listen((List<int> samples) async {
+          if (millisecondStarted == 0) {
+            millisecondStarted = DateTime.now().millisecondsSinceEpoch;
+          }
           List<int> stream = to16bit(samples);
-          if (Platform.isIOS) {
+          bitcount += stream.length;
+
+          double sampleRateCalc = bitcount /
+              (DateTime.now().millisecondsSinceEpoch - millisecondStarted) *
+              1000;
+          double maxDifference = 100000;
+          if ((sampleRateCalc - 16000).abs() < maxDifference) {
+            maxDifference = (sampleRateCalc - 16000).abs();
+            sampleRate = 16000;
+          }
+          if ((sampleRateCalc - 32000).abs() < maxDifference) {
+            maxDifference = (sampleRateCalc - 32000).abs();
+            sampleRate = 32000;
+          }
+          if ((sampleRateCalc - 48000).abs() < maxDifference) {
+            maxDifference = (sampleRateCalc - 48000).abs();
+            sampleRate = 48000;
+          }
+          if (sampleRate == 48000) {
             for (int i = 2; i < stream.length; i += 3) {
               _buffer.add(
                   ((stream[i - 2] + stream[i - 1] + stream[i]) / 3).round());
             }
-          } else {
+          }
+          if (sampleRate == 32000) {
+            for (int i = 1; i < stream.length; i += 2) {
+              _buffer.add(((stream[i - 1] + stream[i]) / 2).round());
+            }
+          }
+          if (sampleRate == 16000) {
             _buffer.addAll(stream);
           }
 

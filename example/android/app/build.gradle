@@ -37,8 +37,8 @@ android {
         applicationId "ai.hotg.runevm_fl_example"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 10
+        versionName "1.0.1"
     }
 
     buildTypes {
