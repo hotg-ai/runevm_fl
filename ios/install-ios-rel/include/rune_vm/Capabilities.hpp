@@ -11,8 +11,13 @@
 #include <unordered_set>
 #include <type_traits>
 #include <variant>
+#include <optional>
 #include <rune_vm/DataView.hpp>
 #include <rune_vm/VirtualInterface.hpp>
+
+namespace rune_vm {
+    using TRuneId = uint64_t;
+}
 
 namespace rune_vm::capabilities {
     enum class Capability: uint8_t {
@@ -50,17 +55,20 @@ namespace rune_vm::capabilities {
         // capabilityId is unique, unless requestCapability returns false - in that case it could be reused next time
         // return true if capability is available and false otherwise
         [[nodiscard]] virtual bool requestCapability(
+            const TRuneId runeId,
             const Capability capability,
             const TId newCapabilityId) noexcept = 0;
         // request capability parameter change
         // return true if new param is possible to set and false otherwise
         [[nodiscard]] virtual bool requestCapabilityParamChange(
+            const TRuneId runeId,
             const TId capabilityId,
             const TKey& key,
             const Parameter& parameter) noexcept = 0;
         // requests new input from capabilityId being written into buffer
         // return true if there's data for that capability and false otherwise
         [[nodiscard]] virtual bool requestRuneInputFromCapability(
+            const TRuneId runeId,
             const rune_vm::DataView<uint8_t> buffer,
             const TId capabilityId) noexcept = 0;
     };

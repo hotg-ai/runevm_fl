@@ -19,6 +19,527 @@ class NativeLibrary {
       : _lookup = lookup;
 
   /// \brief
+  /// Check if the result contains a `usize`.
+  bool rune_result_IntegerOrErrorResult_is_ok(
+    ffi.Pointer<IntegerOrErrorResult> result,
+  ) {
+    return _rune_result_IntegerOrErrorResult_is_ok(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_IntegerOrErrorResult_is_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_IntegerOrErrorResult_is_ok>>(
+          'rune_result_IntegerOrErrorResult_is_ok');
+  late final _dart_rune_result_IntegerOrErrorResult_is_ok
+      _rune_result_IntegerOrErrorResult_is_ok =
+      _rune_result_IntegerOrErrorResult_is_ok_ptr
+          .asFunction<_dart_rune_result_IntegerOrErrorResult_is_ok>();
+
+  /// \brief
+  /// Check if the result contains a `BoxedError`.
+  bool rune_result_IntegerOrErrorResult_is_err(
+    ffi.Pointer<IntegerOrErrorResult> result,
+  ) {
+    return _rune_result_IntegerOrErrorResult_is_err(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_IntegerOrErrorResult_is_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_IntegerOrErrorResult_is_err>>(
+          'rune_result_IntegerOrErrorResult_is_err');
+  late final _dart_rune_result_IntegerOrErrorResult_is_err
+      _rune_result_IntegerOrErrorResult_is_err =
+      _rune_result_IntegerOrErrorResult_is_err_ptr
+          .asFunction<_dart_rune_result_IntegerOrErrorResult_is_err>();
+
+  /// \brief
+  /// Free the `IntegerOrErrorResult` after you are done with it.
+  void rune_result_IntegerOrErrorResult_free(
+    ffi.Pointer<IntegerOrErrorResult> result,
+  ) {
+    return _rune_result_IntegerOrErrorResult_free(
+      result,
+    );
+  }
+
+  late final _rune_result_IntegerOrErrorResult_free_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_IntegerOrErrorResult_free>>(
+          'rune_result_IntegerOrErrorResult_free');
+  late final _dart_rune_result_IntegerOrErrorResult_free
+      _rune_result_IntegerOrErrorResult_free =
+      _rune_result_IntegerOrErrorResult_free_ptr
+          .asFunction<_dart_rune_result_IntegerOrErrorResult_free>();
+
+  /// \brief
+  /// Get a reference to the `usize` in this `IntegerOrErrorResult`, or `null` if
+  /// not present.
+  ffi.Pointer<ffi.Uint64> rune_result_IntegerOrErrorResult_get_ok(
+    ffi.Pointer<IntegerOrErrorResult> result,
+  ) {
+    return _rune_result_IntegerOrErrorResult_get_ok(
+      result,
+    );
+  }
+
+  late final _rune_result_IntegerOrErrorResult_get_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_IntegerOrErrorResult_get_ok>>(
+          'rune_result_IntegerOrErrorResult_get_ok');
+  late final _dart_rune_result_IntegerOrErrorResult_get_ok
+      _rune_result_IntegerOrErrorResult_get_ok =
+      _rune_result_IntegerOrErrorResult_get_ok_ptr
+          .asFunction<_dart_rune_result_IntegerOrErrorResult_get_ok>();
+
+  /// \brief
+  /// Get a reference to the `BoxedError` in this `IntegerOrErrorResult`, or `null`
+  /// if not present.
+  ffi.Pointer<ffi.Pointer<Error>> rune_result_IntegerOrErrorResult_get_err(
+    ffi.Pointer<IntegerOrErrorResult> result,
+  ) {
+    return _rune_result_IntegerOrErrorResult_get_err(
+      result,
+    );
+  }
+
+  late final _rune_result_IntegerOrErrorResult_get_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_IntegerOrErrorResult_get_err>>(
+          'rune_result_IntegerOrErrorResult_get_err');
+  late final _dart_rune_result_IntegerOrErrorResult_get_err
+      _rune_result_IntegerOrErrorResult_get_err =
+      _rune_result_IntegerOrErrorResult_get_err_ptr
+          .asFunction<_dart_rune_result_IntegerOrErrorResult_get_err>();
+
+  /// \brief
+  /// Extract the `usize`, freeing the `IntegerOrErrorResult` and crashing if it
+  /// actually contains a `BoxedError`.
+  int rune_result_IntegerOrErrorResult_take_ok(
+    ffi.Pointer<IntegerOrErrorResult> result,
+  ) {
+    return _rune_result_IntegerOrErrorResult_take_ok(
+      result,
+    );
+  }
+
+  late final _rune_result_IntegerOrErrorResult_take_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_IntegerOrErrorResult_take_ok>>(
+          'rune_result_IntegerOrErrorResult_take_ok');
+  late final _dart_rune_result_IntegerOrErrorResult_take_ok
+      _rune_result_IntegerOrErrorResult_take_ok =
+      _rune_result_IntegerOrErrorResult_take_ok_ptr
+          .asFunction<_dart_rune_result_IntegerOrErrorResult_take_ok>();
+
+  /// \brief
+  /// Extract the `BoxedError`, freeing the `IntegerOrErrorResult` and crashing if
+  /// it actually contains a `usize`.
+  ffi.Pointer<Error> rune_result_IntegerOrErrorResult_take_err(
+    ffi.Pointer<IntegerOrErrorResult> result,
+  ) {
+    return _rune_result_IntegerOrErrorResult_take_err(
+      result,
+    );
+  }
+
+  late final _rune_result_IntegerOrErrorResult_take_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_IntegerOrErrorResult_take_err>>(
+          'rune_result_IntegerOrErrorResult_take_err');
+  late final _dart_rune_result_IntegerOrErrorResult_take_err
+      _rune_result_IntegerOrErrorResult_take_err =
+      _rune_result_IntegerOrErrorResult_take_err_ptr
+          .asFunction<_dart_rune_result_IntegerOrErrorResult_take_err>();
+
+  /// \brief
+  /// Check if the result contains a `BoxedCapability`.
+  bool rune_result_CapabilityResult_is_ok(
+    ffi.Pointer<CapabilityResult> result,
+  ) {
+    return _rune_result_CapabilityResult_is_ok(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_CapabilityResult_is_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_CapabilityResult_is_ok>>(
+          'rune_result_CapabilityResult_is_ok');
+  late final _dart_rune_result_CapabilityResult_is_ok
+      _rune_result_CapabilityResult_is_ok =
+      _rune_result_CapabilityResult_is_ok_ptr
+          .asFunction<_dart_rune_result_CapabilityResult_is_ok>();
+
+  /// \brief
+  /// Check if the result contains a `BoxedError`.
+  bool rune_result_CapabilityResult_is_err(
+    ffi.Pointer<CapabilityResult> result,
+  ) {
+    return _rune_result_CapabilityResult_is_err(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_CapabilityResult_is_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_CapabilityResult_is_err>>(
+          'rune_result_CapabilityResult_is_err');
+  late final _dart_rune_result_CapabilityResult_is_err
+      _rune_result_CapabilityResult_is_err =
+      _rune_result_CapabilityResult_is_err_ptr
+          .asFunction<_dart_rune_result_CapabilityResult_is_err>();
+
+  /// \brief
+  /// Free the `CapabilityResult` after you are done with it.
+  void rune_result_CapabilityResult_free(
+    ffi.Pointer<CapabilityResult> result,
+  ) {
+    return _rune_result_CapabilityResult_free(
+      result,
+    );
+  }
+
+  late final _rune_result_CapabilityResult_free_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_CapabilityResult_free>>(
+          'rune_result_CapabilityResult_free');
+  late final _dart_rune_result_CapabilityResult_free
+      _rune_result_CapabilityResult_free =
+      _rune_result_CapabilityResult_free_ptr
+          .asFunction<_dart_rune_result_CapabilityResult_free>();
+
+  /// \brief
+  /// Get a reference to the `BoxedCapability` in this `CapabilityResult`, or
+  /// `null` if not present.
+  ffi.Pointer<ffi.Pointer<Capability_t>> rune_result_CapabilityResult_get_ok(
+    ffi.Pointer<CapabilityResult> result,
+  ) {
+    return _rune_result_CapabilityResult_get_ok(
+      result,
+    );
+  }
+
+  late final _rune_result_CapabilityResult_get_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_CapabilityResult_get_ok>>(
+          'rune_result_CapabilityResult_get_ok');
+  late final _dart_rune_result_CapabilityResult_get_ok
+      _rune_result_CapabilityResult_get_ok =
+      _rune_result_CapabilityResult_get_ok_ptr
+          .asFunction<_dart_rune_result_CapabilityResult_get_ok>();
+
+  /// \brief
+  /// Get a reference to the `BoxedError` in this `CapabilityResult`, or `null` if
+  /// not present.
+  ffi.Pointer<ffi.Pointer<Error>> rune_result_CapabilityResult_get_err(
+    ffi.Pointer<CapabilityResult> result,
+  ) {
+    return _rune_result_CapabilityResult_get_err(
+      result,
+    );
+  }
+
+  late final _rune_result_CapabilityResult_get_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_CapabilityResult_get_err>>(
+          'rune_result_CapabilityResult_get_err');
+  late final _dart_rune_result_CapabilityResult_get_err
+      _rune_result_CapabilityResult_get_err =
+      _rune_result_CapabilityResult_get_err_ptr
+          .asFunction<_dart_rune_result_CapabilityResult_get_err>();
+
+  /// \brief
+  /// Extract the `BoxedCapability`, freeing the `CapabilityResult` and crashing if
+  /// it actually contains a `BoxedError`.
+  ffi.Pointer<Capability_t> rune_result_CapabilityResult_take_ok(
+    ffi.Pointer<CapabilityResult> result,
+  ) {
+    return _rune_result_CapabilityResult_take_ok(
+      result,
+    );
+  }
+
+  late final _rune_result_CapabilityResult_take_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_CapabilityResult_take_ok>>(
+          'rune_result_CapabilityResult_take_ok');
+  late final _dart_rune_result_CapabilityResult_take_ok
+      _rune_result_CapabilityResult_take_ok =
+      _rune_result_CapabilityResult_take_ok_ptr
+          .asFunction<_dart_rune_result_CapabilityResult_take_ok>();
+
+  /// \brief
+  /// Extract the `BoxedError`, freeing the `CapabilityResult` and crashing if it
+  /// actually contains a `BoxedCapability`.
+  ffi.Pointer<Error> rune_result_CapabilityResult_take_err(
+    ffi.Pointer<CapabilityResult> result,
+  ) {
+    return _rune_result_CapabilityResult_take_err(
+      result,
+    );
+  }
+
+  late final _rune_result_CapabilityResult_take_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_CapabilityResult_take_err>>(
+          'rune_result_CapabilityResult_take_err');
+  late final _dart_rune_result_CapabilityResult_take_err
+      _rune_result_CapabilityResult_take_err =
+      _rune_result_CapabilityResult_take_err_ptr
+          .asFunction<_dart_rune_result_CapabilityResult_take_err>();
+
+  ffi.Pointer<RunicosBaseImage> rune_image_new() {
+    return _rune_image_new();
+  }
+
+  late final _rune_image_new_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_image_new>>('rune_image_new');
+  late final _dart_rune_image_new _rune_image_new =
+      _rune_image_new_ptr.asFunction<_dart_rune_image_new>();
+
+  void rune_image_free(
+    ffi.Pointer<RunicosBaseImage> image,
+  ) {
+    return _rune_image_free(
+      image,
+    );
+  }
+
+  late final _rune_image_free_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_image_free>>('rune_image_free');
+  late final _dart_rune_image_free _rune_image_free =
+      _rune_image_free_ptr.asFunction<_dart_rune_image_free>();
+
+  /// \brief
+  /// Set the closure to be called when the Rune emits log messages.
+  void rune_image_set_log(
+    ffi.Pointer<RunicosBaseImage> image,
+    BoxDynFnMut1_RuneResult_ptr_LogRecord_t log,
+  ) {
+    return _rune_image_set_log(
+      image,
+      log,
+    );
+  }
+
+  late final _rune_image_set_log_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_image_set_log>>('rune_image_set_log');
+  late final _dart_rune_image_set_log _rune_image_set_log =
+      _rune_image_set_log_ptr.asFunction<_dart_rune_image_set_log>();
+
+  void rune_image_set_raw(
+    ffi.Pointer<RunicosBaseImage> image,
+    BoxDynFnMut0_CapabilityResult_ptr_t raw,
+  ) {
+    return _rune_image_set_raw(
+      image,
+      raw,
+    );
+  }
+
+  late final _rune_image_set_raw_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_image_set_raw>>('rune_image_set_raw');
+  late final _dart_rune_image_set_raw _rune_image_set_raw =
+      _rune_image_set_raw_ptr.asFunction<_dart_rune_image_set_raw>();
+
+  ffi.Pointer<ffi.Int8> rune_log_level_name(
+    int level,
+  ) {
+    return _rune_log_level_name(
+      level,
+    );
+  }
+
+  late final _rune_log_level_name_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_log_level_name>>(
+          'rune_log_level_name');
+  late final _dart_rune_log_level_name _rune_log_level_name =
+      _rune_log_level_name_ptr.asFunction<_dart_rune_log_level_name>();
+
+  /// \brief
+  /// Check if the result contains a `BoxedWasmerRuntime`.
+  bool rune_result_WasmerRuntimeResult_is_ok(
+    ffi.Pointer<WasmerRuntimeResult> result,
+  ) {
+    return _rune_result_WasmerRuntimeResult_is_ok(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_WasmerRuntimeResult_is_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_WasmerRuntimeResult_is_ok>>(
+          'rune_result_WasmerRuntimeResult_is_ok');
+  late final _dart_rune_result_WasmerRuntimeResult_is_ok
+      _rune_result_WasmerRuntimeResult_is_ok =
+      _rune_result_WasmerRuntimeResult_is_ok_ptr
+          .asFunction<_dart_rune_result_WasmerRuntimeResult_is_ok>();
+
+  /// \brief
+  /// Check if the result contains a `BoxedError`.
+  bool rune_result_WasmerRuntimeResult_is_err(
+    ffi.Pointer<WasmerRuntimeResult> result,
+  ) {
+    return _rune_result_WasmerRuntimeResult_is_err(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_WasmerRuntimeResult_is_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_WasmerRuntimeResult_is_err>>(
+          'rune_result_WasmerRuntimeResult_is_err');
+  late final _dart_rune_result_WasmerRuntimeResult_is_err
+      _rune_result_WasmerRuntimeResult_is_err =
+      _rune_result_WasmerRuntimeResult_is_err_ptr
+          .asFunction<_dart_rune_result_WasmerRuntimeResult_is_err>();
+
+  /// \brief
+  /// Free the `WasmerRuntimeResult` after you are done with it.
+  void rune_result_WasmerRuntimeResult_free(
+    ffi.Pointer<WasmerRuntimeResult> result,
+  ) {
+    return _rune_result_WasmerRuntimeResult_free(
+      result,
+    );
+  }
+
+  late final _rune_result_WasmerRuntimeResult_free_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_WasmerRuntimeResult_free>>(
+          'rune_result_WasmerRuntimeResult_free');
+  late final _dart_rune_result_WasmerRuntimeResult_free
+      _rune_result_WasmerRuntimeResult_free =
+      _rune_result_WasmerRuntimeResult_free_ptr
+          .asFunction<_dart_rune_result_WasmerRuntimeResult_free>();
+
+  /// \brief
+  /// Get a reference to the `BoxedWasmerRuntime` in this `WasmerRuntimeResult`, or
+  /// `null` if not present.
+  ffi.Pointer<ffi.Pointer<WasmerRuntime>>
+      rune_result_WasmerRuntimeResult_get_ok(
+    ffi.Pointer<WasmerRuntimeResult> result,
+  ) {
+    return _rune_result_WasmerRuntimeResult_get_ok(
+      result,
+    );
+  }
+
+  late final _rune_result_WasmerRuntimeResult_get_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_WasmerRuntimeResult_get_ok>>(
+          'rune_result_WasmerRuntimeResult_get_ok');
+  late final _dart_rune_result_WasmerRuntimeResult_get_ok
+      _rune_result_WasmerRuntimeResult_get_ok =
+      _rune_result_WasmerRuntimeResult_get_ok_ptr
+          .asFunction<_dart_rune_result_WasmerRuntimeResult_get_ok>();
+
+  /// \brief
+  /// Get a reference to the `BoxedError` in this `WasmerRuntimeResult`, or `null`
+  /// if not present.
+  ffi.Pointer<ffi.Pointer<Error>> rune_result_WasmerRuntimeResult_get_err(
+    ffi.Pointer<WasmerRuntimeResult> result,
+  ) {
+    return _rune_result_WasmerRuntimeResult_get_err(
+      result,
+    );
+  }
+
+  late final _rune_result_WasmerRuntimeResult_get_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_WasmerRuntimeResult_get_err>>(
+          'rune_result_WasmerRuntimeResult_get_err');
+  late final _dart_rune_result_WasmerRuntimeResult_get_err
+      _rune_result_WasmerRuntimeResult_get_err =
+      _rune_result_WasmerRuntimeResult_get_err_ptr
+          .asFunction<_dart_rune_result_WasmerRuntimeResult_get_err>();
+
+  /// \brief
+  /// Extract the `BoxedWasmerRuntime`, freeing the `WasmerRuntimeResult` and
+  /// crashing if it actually contains a `BoxedError`.
+  ffi.Pointer<WasmerRuntime> rune_result_WasmerRuntimeResult_take_ok(
+    ffi.Pointer<WasmerRuntimeResult> result,
+  ) {
+    return _rune_result_WasmerRuntimeResult_take_ok(
+      result,
+    );
+  }
+
+  late final _rune_result_WasmerRuntimeResult_take_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_WasmerRuntimeResult_take_ok>>(
+          'rune_result_WasmerRuntimeResult_take_ok');
+  late final _dart_rune_result_WasmerRuntimeResult_take_ok
+      _rune_result_WasmerRuntimeResult_take_ok =
+      _rune_result_WasmerRuntimeResult_take_ok_ptr
+          .asFunction<_dart_rune_result_WasmerRuntimeResult_take_ok>();
+
+  /// \brief
+  /// Extract the `BoxedError`, freeing the `WasmerRuntimeResult` and crashing if
+  /// it actually contains a `BoxedWasmerRuntime`.
+  ffi.Pointer<Error> rune_result_WasmerRuntimeResult_take_err(
+    ffi.Pointer<WasmerRuntimeResult> result,
+  ) {
+    return _rune_result_WasmerRuntimeResult_take_err(
+      result,
+    );
+  }
+
+  late final _rune_result_WasmerRuntimeResult_take_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_WasmerRuntimeResult_take_err>>(
+          'rune_result_WasmerRuntimeResult_take_err');
+  late final _dart_rune_result_WasmerRuntimeResult_take_err
+      _rune_result_WasmerRuntimeResult_take_err =
+      _rune_result_WasmerRuntimeResult_take_err_ptr
+          .asFunction<_dart_rune_result_WasmerRuntimeResult_take_err>();
+
+  /// \brief
+  /// Load a Rune backed by the provided image.
+  ///
+  /// If loading is successful, `runtime_out` will be set to a new `WasmerRuntime`
+  /// instance, otherwise an error is returned.
+  ffi.Pointer<WasmerRuntimeResult> rune_wasmer_runtime_load(
+    slice_ref_uint8_t rune,
+    ffi.Pointer<RunicosBaseImage> image,
+  ) {
+    return _rune_wasmer_runtime_load(
+      rune,
+      image,
+    );
+  }
+
+  late final _rune_wasmer_runtime_load_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_wasmer_runtime_load>>(
+          'rune_wasmer_runtime_load');
+  late final _dart_rune_wasmer_runtime_load _rune_wasmer_runtime_load =
+      _rune_wasmer_runtime_load_ptr
+          .asFunction<_dart_rune_wasmer_runtime_load>();
+
+  /// \brief
+  /// Free a `WasmerRuntime` once you are done with it.
+  void rune_wasmer_runtime_free(
+    ffi.Pointer<WasmerRuntime> runtime,
+  ) {
+    return _rune_wasmer_runtime_free(
+      runtime,
+    );
+  }
+
+  late final _rune_wasmer_runtime_free_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_wasmer_runtime_free>>(
+          'rune_wasmer_runtime_free');
+  late final _dart_rune_wasmer_runtime_free _rune_wasmer_runtime_free =
+      _rune_wasmer_runtime_free_ptr
+          .asFunction<_dart_rune_wasmer_runtime_free>();
+
+  /// \brief
+  /// Evaluate the Rune pipeline.
+  ffi.Pointer<RuneResult> rune_wasmer_runtime_call(
+    ffi.Pointer<WasmerRuntime> runtime,
+  ) {
+    return _rune_wasmer_runtime_call(
+      runtime,
+    );
+  }
+
+  late final _rune_wasmer_runtime_call_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_wasmer_runtime_call>>(
+          'rune_wasmer_runtime_call');
+  late final _dart_rune_wasmer_runtime_call _rune_wasmer_runtime_call =
+      _rune_wasmer_runtime_call_ptr
+          .asFunction<_dart_rune_wasmer_runtime_call>();
+
+  /// \brief
   /// Construct a new error.
   ffi.Pointer<Error> rune_error_new(
     ffi.Pointer<ffi.Int8> msg,
@@ -102,46 +623,131 @@ class NativeLibrary {
           .asFunction<_dart_rune_error_to_string_verbose>();
 
   /// \brief
-  /// Free a `WasmerRuntime` once you are done with it.
-  void rune_wasmer_runtime_free(
-    ffi.Pointer<WasmerRuntime> runtime,
+  /// Check if the result contains a `u8`.
+  bool rune_result_RuneResult_is_ok(
+    ffi.Pointer<RuneResult> result,
   ) {
-    return _rune_wasmer_runtime_free(
-      runtime,
+    return _rune_result_RuneResult_is_ok(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_RuneResult_is_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_RuneResult_is_ok>>(
+          'rune_result_RuneResult_is_ok');
+  late final _dart_rune_result_RuneResult_is_ok _rune_result_RuneResult_is_ok =
+      _rune_result_RuneResult_is_ok_ptr
+          .asFunction<_dart_rune_result_RuneResult_is_ok>();
+
+  /// \brief
+  /// Check if the result contains a `BoxedError`.
+  bool rune_result_RuneResult_is_err(
+    ffi.Pointer<RuneResult> result,
+  ) {
+    return _rune_result_RuneResult_is_err(
+          result,
+        ) !=
+        0;
+  }
+
+  late final _rune_result_RuneResult_is_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_RuneResult_is_err>>(
+          'rune_result_RuneResult_is_err');
+  late final _dart_rune_result_RuneResult_is_err
+      _rune_result_RuneResult_is_err = _rune_result_RuneResult_is_err_ptr
+          .asFunction<_dart_rune_result_RuneResult_is_err>();
+
+  /// \brief
+  /// Free the `RuneResult` after you are done with it.
+  void rune_result_RuneResult_free(
+    ffi.Pointer<RuneResult> result,
+  ) {
+    return _rune_result_RuneResult_free(
+      result,
     );
   }
 
-  late final _rune_wasmer_runtime_free_ptr =
-      _lookup<ffi.NativeFunction<_c_rune_wasmer_runtime_free>>(
-          'rune_wasmer_runtime_free');
-  late final _dart_rune_wasmer_runtime_free _rune_wasmer_runtime_free =
-      _rune_wasmer_runtime_free_ptr
-          .asFunction<_dart_rune_wasmer_runtime_free>();
+  late final _rune_result_RuneResult_free_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_RuneResult_free>>(
+          'rune_result_RuneResult_free');
+  late final _dart_rune_result_RuneResult_free _rune_result_RuneResult_free =
+      _rune_result_RuneResult_free_ptr
+          .asFunction<_dart_rune_result_RuneResult_free>();
 
-  ffi.Pointer<RunicosBaseImage> rune_image_new() {
-    return _rune_image_new();
-  }
-
-  late final _rune_image_new_ptr =
-      _lookup<ffi.NativeFunction<_c_rune_image_new>>('rune_image_new');
-  late final _dart_rune_image_new _rune_image_new =
-      _rune_image_new_ptr.asFunction<_dart_rune_image_new>();
-
-  void rune_image_free(
-    ffi.Pointer<RunicosBaseImage> image,
+  /// \brief
+  /// Get a reference to the `u8` in this `RuneResult`, or `null` if not present.
+  ffi.Pointer<ffi.Uint8> rune_result_RuneResult_get_ok(
+    ffi.Pointer<RuneResult> result,
   ) {
-    return _rune_image_free(
-      image,
+    return _rune_result_RuneResult_get_ok(
+      result,
     );
   }
 
-  late final _rune_image_free_ptr =
-      _lookup<ffi.NativeFunction<_c_rune_image_free>>('rune_image_free');
-  late final _dart_rune_image_free _rune_image_free =
-      _rune_image_free_ptr.asFunction<_dart_rune_image_free>();
+  late final _rune_result_RuneResult_get_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_RuneResult_get_ok>>(
+          'rune_result_RuneResult_get_ok');
+  late final _dart_rune_result_RuneResult_get_ok
+      _rune_result_RuneResult_get_ok = _rune_result_RuneResult_get_ok_ptr
+          .asFunction<_dart_rune_result_RuneResult_get_ok>();
+
+  /// \brief
+  /// Get a reference to the `BoxedError` in this `RuneResult`, or `null` if not
+  /// present.
+  ffi.Pointer<ffi.Pointer<Error>> rune_result_RuneResult_get_err(
+    ffi.Pointer<RuneResult> result,
+  ) {
+    return _rune_result_RuneResult_get_err(
+      result,
+    );
+  }
+
+  late final _rune_result_RuneResult_get_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_RuneResult_get_err>>(
+          'rune_result_RuneResult_get_err');
+  late final _dart_rune_result_RuneResult_get_err
+      _rune_result_RuneResult_get_err = _rune_result_RuneResult_get_err_ptr
+          .asFunction<_dart_rune_result_RuneResult_get_err>();
+
+  /// \brief
+  /// Extract the `u8`, freeing the `RuneResult` and crashing if it actually
+  /// contains a `BoxedError`.
+  int rune_result_RuneResult_take_ok(
+    ffi.Pointer<RuneResult> result,
+  ) {
+    return _rune_result_RuneResult_take_ok(
+      result,
+    );
+  }
+
+  late final _rune_result_RuneResult_take_ok_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_RuneResult_take_ok>>(
+          'rune_result_RuneResult_take_ok');
+  late final _dart_rune_result_RuneResult_take_ok
+      _rune_result_RuneResult_take_ok = _rune_result_RuneResult_take_ok_ptr
+          .asFunction<_dart_rune_result_RuneResult_take_ok>();
+
+  /// \brief
+  /// Extract the `BoxedError`, freeing the `RuneResult` and crashing if it
+  /// actually contains a `u8`.
+  ffi.Pointer<Error> rune_result_RuneResult_take_err(
+    ffi.Pointer<RuneResult> result,
+  ) {
+    return _rune_result_RuneResult_take_err(
+      result,
+    );
+  }
+
+  late final _rune_result_RuneResult_take_err_ptr =
+      _lookup<ffi.NativeFunction<_c_rune_result_RuneResult_take_err>>(
+          'rune_result_RuneResult_take_err');
+  late final _dart_rune_result_RuneResult_take_err
+      _rune_result_RuneResult_take_err = _rune_result_RuneResult_take_err_ptr
+          .asFunction<_dart_rune_result_RuneResult_take_err>();
 }
 
-class Error extends ffi.Opaque {}
+class IntegerOrErrorResult extends ffi.Opaque {}
 
 class __darwin_pthread_handler_rec extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<_typedefC_1>> __routine;
@@ -225,56 +831,9 @@ class _opaque_pthread_t extends ffi.Struct {
   external ffi.Array<ffi.Int8> __opaque;
 }
 
-/// \brief
-/// `&'lt [T]` but with a guaranteed `#[repr(C)]` layout.
-///
-/// # C layout (for some given type T)
-///
-/// ```c
-/// typedef struct {
-/// // Cannot be NULL
-/// T * ptr;
-/// size_t len;
-/// } slice_T;
-/// ```
-///
-/// # Nullable pointer?
-///
-/// If you want to support the above typedef, but where the `ptr` field is
-/// allowed to be `NULL` (with the contents of `len` then being undefined)
-/// use the `Option< slice_ptr<_> >` type.
-class slice_ref_uint8_t extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
+class Error extends ffi.Opaque {}
 
-  @ffi.Uint64()
-  external int len;
-}
-
-class RunicosBaseImage extends ffi.Opaque {}
-
-class WasmerRuntime extends ffi.Opaque {}
-
-class Ok_WasmerRuntime_ptr_t extends ffi.Struct {
-  @ffi.Uint8()
-  external int tag;
-
-  external ffi.Pointer<WasmerRuntime> value;
-}
-
-class Err_Error_ptr_t extends ffi.Struct {
-  @ffi.Uint8()
-  external int tag;
-
-  external ffi.Pointer<Error> error;
-}
-
-class Ok_uint8_t extends ffi.Struct {
-  @ffi.Uint8()
-  external int tag;
-
-  @ffi.Uint8()
-  external int value;
-}
+class CapabilityResult extends ffi.Opaque {}
 
 /// \brief
 /// Like [`slice_ref`] and [`slice_mut`], but with any lifetime attached
@@ -306,6 +865,20 @@ class slice_raw_uint8_t extends ffi.Struct {
   external int len;
 }
 
+class Capability_t extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> user_data;
+
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_2>> set_parameter;
+
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_3>> generate;
+
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_4>> free;
+}
+
+class RunicosBaseImage extends ffi.Opaque {}
+
+class RuneResult extends ffi.Opaque {}
+
 class LogRecord_t extends ffi.Struct {
   @ffi.Uint32()
   external int level;
@@ -315,17 +888,50 @@ class LogRecord_t extends ffi.Struct {
   external ffi.Pointer<ffi.Int8> message;
 }
 
-class BoxDynFnMut1_Result_uint8_Error_ptr_LogRecord_t extends ffi.Struct {
+class BoxDynFnMut1_RuneResult_ptr_LogRecord_t extends ffi.Struct {
   external ffi.Pointer<ffi.Void> env_ptr;
 
-  external ffi.Pointer<ffi.NativeFunction<_typedefC_2>> call;
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_5>> call;
 
-  external ffi.Pointer<ffi.NativeFunction<_typedefC_3>> free;
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_6>> free;
 }
 
-const int RESULT_TAG_OK = 0;
+class BoxDynFnMut0_CapabilityResult_ptr_t extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> env_ptr;
 
-const int RESULT_TAG_ERR = 1;
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_7>> call;
+
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_8>> free;
+}
+
+class WasmerRuntimeResult extends ffi.Opaque {}
+
+class WasmerRuntime extends ffi.Opaque {}
+
+/// \brief
+/// `&'lt [T]` but with a guaranteed `#[repr(C)]` layout.
+///
+/// # C layout (for some given type T)
+///
+/// ```c
+/// typedef struct {
+/// // Cannot be NULL
+/// T * ptr;
+/// size_t len;
+/// } slice_T;
+/// ```
+///
+/// # Nullable pointer?
+///
+/// If you want to support the above typedef, but where the `ptr` field is
+/// allowed to be `NULL` (with the contents of `len` then being undefined)
+/// use the `Option< slice_ptr<_> >` type.
+class slice_ref_uint8_t extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Uint64()
+  external int len;
+}
 
 const int LOG_LEVEL_ERROR = 1;
 
@@ -336,6 +942,12 @@ const int LOG_LEVEL_INFO = 3;
 const int LOG_LEVEL_DEBUG = 4;
 
 const int LOG_LEVEL_TRACE = 5;
+
+const int true_1 = 1;
+
+const int false_1 = 0;
+
+const int __bool_true_false_are_defined = 1;
 
 const int __DARWIN_ONLY_64_BIT_INO_T = 0;
 
@@ -511,6 +1123,262 @@ const int SIG_ATOMIC_MIN = -2147483648;
 
 const int SIG_ATOMIC_MAX = 2147483647;
 
+typedef _c_rune_result_IntegerOrErrorResult_is_ok = ffi.Uint8 Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _dart_rune_result_IntegerOrErrorResult_is_ok = int Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _c_rune_result_IntegerOrErrorResult_is_err = ffi.Uint8 Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _dart_rune_result_IntegerOrErrorResult_is_err = int Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _c_rune_result_IntegerOrErrorResult_free = ffi.Void Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _dart_rune_result_IntegerOrErrorResult_free = void Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _c_rune_result_IntegerOrErrorResult_get_ok = ffi.Pointer<ffi.Uint64>
+    Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _dart_rune_result_IntegerOrErrorResult_get_ok = ffi.Pointer<ffi.Uint64>
+    Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _c_rune_result_IntegerOrErrorResult_get_err
+    = ffi.Pointer<ffi.Pointer<Error>> Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _dart_rune_result_IntegerOrErrorResult_get_err
+    = ffi.Pointer<ffi.Pointer<Error>> Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _c_rune_result_IntegerOrErrorResult_take_ok = ffi.Uint64 Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _dart_rune_result_IntegerOrErrorResult_take_ok = int Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _c_rune_result_IntegerOrErrorResult_take_err = ffi.Pointer<Error>
+    Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _dart_rune_result_IntegerOrErrorResult_take_err = ffi.Pointer<Error>
+    Function(
+  ffi.Pointer<IntegerOrErrorResult> result,
+);
+
+typedef _c_rune_result_CapabilityResult_is_ok = ffi.Uint8 Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _dart_rune_result_CapabilityResult_is_ok = int Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _c_rune_result_CapabilityResult_is_err = ffi.Uint8 Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _dart_rune_result_CapabilityResult_is_err = int Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _c_rune_result_CapabilityResult_free = ffi.Void Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _dart_rune_result_CapabilityResult_free = void Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _c_rune_result_CapabilityResult_get_ok
+    = ffi.Pointer<ffi.Pointer<Capability_t>> Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _dart_rune_result_CapabilityResult_get_ok
+    = ffi.Pointer<ffi.Pointer<Capability_t>> Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _c_rune_result_CapabilityResult_get_err
+    = ffi.Pointer<ffi.Pointer<Error>> Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _dart_rune_result_CapabilityResult_get_err
+    = ffi.Pointer<ffi.Pointer<Error>> Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _c_rune_result_CapabilityResult_take_ok = ffi.Pointer<Capability_t>
+    Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _dart_rune_result_CapabilityResult_take_ok = ffi.Pointer<Capability_t>
+    Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _c_rune_result_CapabilityResult_take_err = ffi.Pointer<Error> Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _dart_rune_result_CapabilityResult_take_err = ffi.Pointer<Error>
+    Function(
+  ffi.Pointer<CapabilityResult> result,
+);
+
+typedef _c_rune_image_new = ffi.Pointer<RunicosBaseImage> Function();
+
+typedef _dart_rune_image_new = ffi.Pointer<RunicosBaseImage> Function();
+
+typedef _c_rune_image_free = ffi.Void Function(
+  ffi.Pointer<RunicosBaseImage> image,
+);
+
+typedef _dart_rune_image_free = void Function(
+  ffi.Pointer<RunicosBaseImage> image,
+);
+
+typedef _c_rune_image_set_log = ffi.Void Function(
+  ffi.Pointer<RunicosBaseImage> image,
+  BoxDynFnMut1_RuneResult_ptr_LogRecord_t log,
+);
+
+typedef _dart_rune_image_set_log = void Function(
+  ffi.Pointer<RunicosBaseImage> image,
+  BoxDynFnMut1_RuneResult_ptr_LogRecord_t log,
+);
+
+typedef _c_rune_image_set_raw = ffi.Void Function(
+  ffi.Pointer<RunicosBaseImage> image,
+  BoxDynFnMut0_CapabilityResult_ptr_t raw,
+);
+
+typedef _dart_rune_image_set_raw = void Function(
+  ffi.Pointer<RunicosBaseImage> image,
+  BoxDynFnMut0_CapabilityResult_ptr_t raw,
+);
+
+typedef _c_rune_log_level_name = ffi.Pointer<ffi.Int8> Function(
+  ffi.Uint32 level,
+);
+
+typedef _dart_rune_log_level_name = ffi.Pointer<ffi.Int8> Function(
+  int level,
+);
+
+typedef _c_rune_result_WasmerRuntimeResult_is_ok = ffi.Uint8 Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _dart_rune_result_WasmerRuntimeResult_is_ok = int Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _c_rune_result_WasmerRuntimeResult_is_err = ffi.Uint8 Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _dart_rune_result_WasmerRuntimeResult_is_err = int Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _c_rune_result_WasmerRuntimeResult_free = ffi.Void Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _dart_rune_result_WasmerRuntimeResult_free = void Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _c_rune_result_WasmerRuntimeResult_get_ok
+    = ffi.Pointer<ffi.Pointer<WasmerRuntime>> Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _dart_rune_result_WasmerRuntimeResult_get_ok
+    = ffi.Pointer<ffi.Pointer<WasmerRuntime>> Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _c_rune_result_WasmerRuntimeResult_get_err
+    = ffi.Pointer<ffi.Pointer<Error>> Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _dart_rune_result_WasmerRuntimeResult_get_err
+    = ffi.Pointer<ffi.Pointer<Error>> Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _c_rune_result_WasmerRuntimeResult_take_ok = ffi.Pointer<WasmerRuntime>
+    Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _dart_rune_result_WasmerRuntimeResult_take_ok
+    = ffi.Pointer<WasmerRuntime> Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _c_rune_result_WasmerRuntimeResult_take_err = ffi.Pointer<Error>
+    Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _dart_rune_result_WasmerRuntimeResult_take_err = ffi.Pointer<Error>
+    Function(
+  ffi.Pointer<WasmerRuntimeResult> result,
+);
+
+typedef _c_rune_wasmer_runtime_load = ffi.Pointer<WasmerRuntimeResult> Function(
+  slice_ref_uint8_t rune,
+  ffi.Pointer<RunicosBaseImage> image,
+);
+
+typedef _dart_rune_wasmer_runtime_load = ffi.Pointer<WasmerRuntimeResult>
+    Function(
+  slice_ref_uint8_t rune,
+  ffi.Pointer<RunicosBaseImage> image,
+);
+
+typedef _c_rune_wasmer_runtime_free = ffi.Void Function(
+  ffi.Pointer<WasmerRuntime> runtime,
+);
+
+typedef _dart_rune_wasmer_runtime_free = void Function(
+  ffi.Pointer<WasmerRuntime> runtime,
+);
+
+typedef _c_rune_wasmer_runtime_call = ffi.Pointer<RuneResult> Function(
+  ffi.Pointer<WasmerRuntime> runtime,
+);
+
+typedef _dart_rune_wasmer_runtime_call = ffi.Pointer<RuneResult> Function(
+  ffi.Pointer<WasmerRuntime> runtime,
+);
+
 typedef _c_rune_error_new = ffi.Pointer<Error> Function(
   ffi.Pointer<ffi.Int8> msg,
 );
@@ -551,35 +1419,94 @@ typedef _dart_rune_error_to_string_verbose = ffi.Pointer<ffi.Int8> Function(
   ffi.Pointer<Error> error,
 );
 
-typedef _c_rune_wasmer_runtime_free = ffi.Void Function(
-  ffi.Pointer<WasmerRuntime> runtime,
+typedef _c_rune_result_RuneResult_is_ok = ffi.Uint8 Function(
+  ffi.Pointer<RuneResult> result,
 );
 
-typedef _dart_rune_wasmer_runtime_free = void Function(
-  ffi.Pointer<WasmerRuntime> runtime,
+typedef _dart_rune_result_RuneResult_is_ok = int Function(
+  ffi.Pointer<RuneResult> result,
 );
 
-typedef _c_rune_image_new = ffi.Pointer<RunicosBaseImage> Function();
-
-typedef _dart_rune_image_new = ffi.Pointer<RunicosBaseImage> Function();
-
-typedef _c_rune_image_free = ffi.Void Function(
-  ffi.Pointer<RunicosBaseImage> image,
+typedef _c_rune_result_RuneResult_is_err = ffi.Uint8 Function(
+  ffi.Pointer<RuneResult> result,
 );
 
-typedef _dart_rune_image_free = void Function(
-  ffi.Pointer<RunicosBaseImage> image,
+typedef _dart_rune_result_RuneResult_is_err = int Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _c_rune_result_RuneResult_free = ffi.Void Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _dart_rune_result_RuneResult_free = void Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _c_rune_result_RuneResult_get_ok = ffi.Pointer<ffi.Uint8> Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _dart_rune_result_RuneResult_get_ok = ffi.Pointer<ffi.Uint8> Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _c_rune_result_RuneResult_get_err = ffi.Pointer<ffi.Pointer<Error>>
+    Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _dart_rune_result_RuneResult_get_err = ffi.Pointer<ffi.Pointer<Error>>
+    Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _c_rune_result_RuneResult_take_ok = ffi.Uint8 Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _dart_rune_result_RuneResult_take_ok = int Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _c_rune_result_RuneResult_take_err = ffi.Pointer<Error> Function(
+  ffi.Pointer<RuneResult> result,
+);
+
+typedef _dart_rune_result_RuneResult_take_err = ffi.Pointer<Error> Function(
+  ffi.Pointer<RuneResult> result,
 );
 
 typedef _typedefC_1 = ffi.Void Function(
   ffi.Pointer<ffi.Void>,
 );
 
-typedef _typedefC_2 = ffi.Int32 Function(
+typedef _typedefC_2 = ffi.Void Function(
+  ffi.Pointer<ffi.Void>,
+);
+
+typedef _typedefC_3 = IntegerOrErrorResult Function(
+  ffi.Pointer<ffi.Void>,
+  slice_raw_uint8_t,
+);
+
+typedef _typedefC_4 = ffi.Void Function(
+  ffi.Pointer<ffi.Void>,
+);
+
+typedef _typedefC_5 = ffi.Pointer<RuneResult> Function(
   ffi.Pointer<ffi.Void>,
   LogRecord_t,
 );
 
-typedef _typedefC_3 = ffi.Void Function(
+typedef _typedefC_6 = ffi.Void Function(
+  ffi.Pointer<ffi.Void>,
+);
+
+typedef _typedefC_7 = ffi.Pointer<CapabilityResult> Function(
+  ffi.Pointer<ffi.Void>,
+);
+
+typedef _typedefC_8 = ffi.Void Function(
   ffi.Pointer<ffi.Void>,
 );

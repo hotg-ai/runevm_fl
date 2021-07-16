@@ -87,3 +87,9 @@ android/.cxx/cmake/release/arm64-v8a/compile_commands.json
 android/.cxx/cmake/release/arm64-v8a/json_generation_record.json
 android/.cxx/cmake/release/arm64-v8a/prefab_config.json
 android/.cxx/cmake/release/arm64-v8a/rules.ninja
+
+ios/build-ios-rel/
+extern/master/
+extern/rune_vm/
+extern/runevm_s.zip
+android/build-android-rel-arm64-v8a/

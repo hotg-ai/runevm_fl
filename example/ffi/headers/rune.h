@@ -3,7 +3,7 @@
 
  * Authors: The Rune Developers
  * License: MIT OR Apache 2.0
- * Commit: db0ba625551e30f4a46fb7d6b3765e7bd17a6937
+ * Commit: 6ca6011dd00bb009f6c3ff735614f27c522aeb28
  * Compiler: rustc 1.54.0-nightly (1c6868aa2 2021-05-27)
  * Enabled Features: default, rune-wasmer-runtime, tflite, wasmer-runtime
  *
@@ -14,198 +14,80 @@
 #define _RUST_RUNE_NATIVE_
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-  typedef struct Error Error_t;
+typedef struct IntegerOrErrorResult IntegerOrErrorResult_t;
 
-  /** \brief
- *  Construct a new error.
- */
-  Error_t *rune_error_new(char const *msg);
+#include <stdbool.h>
 
-  /** \brief
- *  Free the error once you are done with it.
+/** \brief
+ * Check if the result contains a `usize`.
  */
-  void rune_error_free(Error_t *e);
+bool rune_result_IntegerOrErrorResult_is_ok(
+    IntegerOrErrorResult_t const *result);
 
-  /** \brief
- *  Return a newly allocated string containing the error's backtrace.
+/** \brief
+ * Check if the result contains a `BoxedError`.
  */
-  char *rune_error_backtrace(Error_t const *error);
+bool rune_result_IntegerOrErrorResult_is_err(
+    IntegerOrErrorResult_t const *result);
 
-  /** \brief
- *  Return a newly allocated string describing the error.
+/** \brief
+ * Free the `IntegerOrErrorResult` after you are done with it.
  */
-  char *rune_error_to_string(Error_t const *error);
-
-  /** \brief
- *  Return a newly allocated string describing the error and any errors that
- *  may have caused it.
- *
- *  This will also contain a backtrace if the `RUST_BACKTRACE` environment
- *  variable is set.
- */
-  char *rune_error_to_string_verbose(Error_t const *error);
+void rune_result_IntegerOrErrorResult_free(IntegerOrErrorResult_t *result);
 
 #include <stddef.h>
 #include <stdint.h>
 
-  /** \brief
- *  `&'lt [T]` but with a guaranteed `#[repr(C)]` layout.
- *
- *  # C layout (for some given type T)
- *
- *  ```c
- *  typedef struct {
- *      // Cannot be NULL
- *      T * ptr;
- *      size_t len;
- *  } slice_T;
- *  ```
- *
- *  # Nullable pointer?
- *
- *  If you want to support the above typedef, but where the `ptr` field is
- *  allowed to be `NULL` (with the contents of `len` then being undefined)
- *  use the `Option< slice_ptr<_> >` type.
+/** \brief
+ * Get a reference to the `usize` in this `IntegerOrErrorResult`, or `null` if
+ * not present.
  */
+size_t const *
+rune_result_IntegerOrErrorResult_get_ok(IntegerOrErrorResult_t const *result);
 
-  typedef struct
-  {
+typedef struct Error Error_t;
 
-    uint8_t const *ptr;
-
-    size_t len;
-
-  } slice_ref_uint8_t;
-
-  typedef struct RunicosBaseImage RunicosBaseImage_t;
-
-/** \remark Has the same ABI as `uint8_t` **/
-#ifdef DOXYGEN
-  typedef enum ResultTag
-#else
-typedef uint8_t ResultTag_t;
-enum
-#endif
-  {
-    /** . */
-    RESULT_TAG_OK = 0,
-    /** . */
-    RESULT_TAG_ERR = 1,
-  }
-#ifdef DOXYGEN
-  ResultTag_t
-#endif
-      ;
-
-  typedef struct WasmerRuntime WasmerRuntime_t;
-
-  typedef struct
-  {
-    ResultTag_t tag;
-    WasmerRuntime_t *value;
-  } Ok_WasmerRuntime_ptr_t;
-  typedef struct
-  {
-    ResultTag_t tag;
-    Error_t *error;
-  } Err_Error_ptr_t;
-  /** A type which is guaranteed to be identical to `Result<T, E>`.
- *
- * When initializing the `Result_WasmerRuntime_ptr_Error_ptr_t`, make sure to
- * use the correct tag.
+/** \brief
+ * Get a reference to the `BoxedError` in this `IntegerOrErrorResult`, or `null`
+ * if not present.
  */
-  typedef union
-  {
-    Ok_WasmerRuntime_ptr_t ok;
-    Err_Error_ptr_t err;
-  } Result_WasmerRuntime_ptr_Error_ptr_t;
-  /** \brief
- *  Load a Rune backed by the provided image.
- *
- *  If loading is successful, `runtime_out` will be set to a new `WasmerRuntime`
- *  instance, otherwise an error is returned.
+Error_t *const *
+rune_result_IntegerOrErrorResult_get_err(IntegerOrErrorResult_t const *result);
+
+/** \brief
+ * Extract the `usize`, freeing the `IntegerOrErrorResult` and crashing if it
+ * actually contains a `BoxedError`.
  */
-  Result_WasmerRuntime_ptr_Error_ptr_t
-  rune_wasmer_runtime_load(slice_ref_uint8_t rune, RunicosBaseImage_t *image);
+size_t rune_result_IntegerOrErrorResult_take_ok(IntegerOrErrorResult_t *result);
 
-  /** \brief
- *  Free a `WasmerRuntime` once you are done with it.
+/** \brief
+ * Extract the `BoxedError`, freeing the `IntegerOrErrorResult` and crashing if
+ * it actually contains a `usize`.
  */
-  void rune_wasmer_runtime_free(WasmerRuntime_t *runtime);
+Error_t *
+rune_result_IntegerOrErrorResult_take_err(IntegerOrErrorResult_t *result);
 
-  typedef struct
-  {
-    ResultTag_t tag;
-    uint8_t value;
-  } Ok_uint8_t;
-  /** A type which is guaranteed to be identical to `Result<T, E>`.
- *
- * When initializing the `Result_uint8_Error_ptr_t`, make sure to use the
- * correct tag.
+typedef struct CapabilityResult CapabilityResult_t;
+
+/** \brief
+ * Check if the result contains a `BoxedCapability`.
  */
-  typedef union
-  {
-    Ok_uint8_t ok;
-    Err_Error_ptr_t err;
-  } Result_uint8_Error_ptr_t;
-  /** \brief
- *  Evaluate the Rune pipeline.
+bool rune_result_CapabilityResult_is_ok(CapabilityResult_t const *result);
+
+/** \brief
+ * Check if the result contains a `BoxedError`.
  */
-  Result_uint8_Error_ptr_t rune_wasmer_runtime_call(WasmerRuntime_t *runtime);
+bool rune_result_CapabilityResult_is_err(CapabilityResult_t const *result);
 
-  RunicosBaseImage_t *rune_image_new(void);
+/** \brief
+ * Free the `CapabilityResult` after you are done with it.
+ */
+void rune_result_CapabilityResult_free(CapabilityResult_t *result);
 
-  void rune_image_free(RunicosBaseImage_t *image);
-
-/** \remark Has the same ABI as `uint32_t` **/
-#ifdef DOXYGEN
-  typedef enum LogLevel
-#else
-typedef uint32_t LogLevel_t;
-enum
-#endif
-  {
-    /** \brief
-   *  The "error" level.
-   *
-   *  Designates very serious errors.
-   */
-    LOG_LEVEL_ERROR = 1,
-    /** \brief
-   *  The "warn" level.
-   *
-   *  Designates hazardous situations.
-   */
-    LOG_LEVEL_WARN,
-    /** \brief
-   *  The "info" level.
-   *
-   *  Designates useful information.
-   */
-    LOG_LEVEL_INFO,
-    /** \brief
-   *  The "debug" level.
-   *
-   *  Designates lower priority information.
-   */
-    LOG_LEVEL_DEBUG,
-    /** \brief
-   *  The "trace" level.
-   *
-   *  Designates very low priority, often extremely verbose, information.
-   */
-    LOG_LEVEL_TRACE,
-  }
-#ifdef DOXYGEN
-  LogLevel_t
-#endif
-      ;
-
-  /** \brief
+/** \brief
  *  Like [`slice_ref`] and [`slice_mut`], but with any lifetime attached
  *  whatsoever.
  *
@@ -229,38 +111,306 @@ enum
  *  allowed to be `NULL` (with the contents of `len` then being undefined)
  *  use the `Option< slice_ptr<_> >` type.
  */
+typedef struct {
 
-  typedef struct
-  {
+  uint8_t *ptr;
 
-    uint8_t *ptr;
+  size_t len;
 
-    size_t len;
+} slice_raw_uint8_t;
 
-  } slice_raw_uint8_t;
+typedef struct {
 
-  typedef struct
-  {
+  void *user_data;
 
-    LogLevel_t level;
+  void (*set_parameter)(void *);
 
-    slice_raw_uint8_t target;
+  IntegerOrErrorResult_t (*generate)(void *, slice_raw_uint8_t);
 
-    char *message;
+  void (*free)(void *);
 
-  } LogRecord_t;
+} Capability_t;
 
-  typedef struct
-  {
+/** \brief
+ * Get a reference to the `BoxedCapability` in this `CapabilityResult`, or
+ * `null` if not present.
+ */
+Capability_t *const *
+rune_result_CapabilityResult_get_ok(CapabilityResult_t const *result);
 
-    void *env_ptr;
-    int (*call)(void *, LogRecord_t);
-    void (*free)(void *);
-  } BoxDynFnMut1_Result_uint8_Error_ptr_LogRecord_t;
+/** \brief
+ * Get a reference to the `BoxedError` in this `CapabilityResult`, or `null` if
+ * not present.
+ */
+Error_t *const *
+rune_result_CapabilityResult_get_err(CapabilityResult_t const *result);
 
+/** \brief
+ * Extract the `BoxedCapability`, freeing the `CapabilityResult` and crashing if
+ * it actually contains a `BoxedError`.
+ */
+Capability_t *rune_result_CapabilityResult_take_ok(CapabilityResult_t *result);
+
+/** \brief
+ * Extract the `BoxedError`, freeing the `CapabilityResult` and crashing if it
+ * actually contains a `BoxedCapability`.
+ */
+Error_t *rune_result_CapabilityResult_take_err(CapabilityResult_t *result);
+
+typedef struct RunicosBaseImage RunicosBaseImage_t;
+
+RunicosBaseImage_t *rune_image_new(void);
+
+void rune_image_free(RunicosBaseImage_t *image);
+
+typedef struct RuneResult RuneResult_t;
+
+/** \remark Has the same ABI as `uint32_t` **/
+#ifdef DOXYGEN
+typedef enum LogLevel
+#else
+typedef uint32_t LogLevel_t;
+enum
+#endif
+{
   /** \brief
+   *  The "error" level.
+   *
+   *  Designates very serious errors.
+   */
+  LOG_LEVEL_ERROR = 1,
+  /** \brief
+   *  The "warn" level.
+   *
+   *  Designates hazardous situations.
+   */
+  LOG_LEVEL_WARN,
+  /** \brief
+   *  The "info" level.
+   *
+   *  Designates useful information.
+   */
+  LOG_LEVEL_INFO,
+  /** \brief
+   *  The "debug" level.
+   *
+   *  Designates lower priority information.
+   */
+  LOG_LEVEL_DEBUG,
+  /** \brief
+   *  The "trace" level.
+   *
+   *  Designates very low priority, often extremely verbose, information.
+   */
+  LOG_LEVEL_TRACE,
+}
+#ifdef DOXYGEN
+LogLevel_t
+#endif
+    ;
+
+typedef struct {
+
+  LogLevel_t level;
+
+  slice_raw_uint8_t target;
+
+  char *message;
+
+} LogRecord_t;
+
+typedef struct {
+
+  void *env_ptr;
+
+  RuneResult_t *(*call)(void *, LogRecord_t);
+
+  void (*free)(void *);
+
+} BoxDynFnMut1_RuneResult_ptr_LogRecord_t;
+
+/** \brief
  *  Set the closure to be called when the Rune emits log messages.
  */
+void rune_image_set_log(RunicosBaseImage_t *image,
+                        BoxDynFnMut1_RuneResult_ptr_LogRecord_t log);
+
+typedef struct {
+
+  void *env_ptr;
+
+  CapabilityResult_t *(*call)(void *);
+
+  void (*free)(void *);
+
+} BoxDynFnMut0_CapabilityResult_ptr_t;
+
+void rune_image_set_raw(RunicosBaseImage_t *image,
+                        BoxDynFnMut0_CapabilityResult_ptr_t raw);
+
+char const *rune_log_level_name(LogLevel_t level);
+
+typedef struct WasmerRuntimeResult WasmerRuntimeResult_t;
+
+/** \brief
+ * Check if the result contains a `BoxedWasmerRuntime`.
+ */
+bool rune_result_WasmerRuntimeResult_is_ok(WasmerRuntimeResult_t const *result);
+
+/** \brief
+ * Check if the result contains a `BoxedError`.
+ */
+bool rune_result_WasmerRuntimeResult_is_err(
+    WasmerRuntimeResult_t const *result);
+
+/** \brief
+ * Free the `WasmerRuntimeResult` after you are done with it.
+ */
+void rune_result_WasmerRuntimeResult_free(WasmerRuntimeResult_t *result);
+
+typedef struct WasmerRuntime WasmerRuntime_t;
+
+/** \brief
+ * Get a reference to the `BoxedWasmerRuntime` in this `WasmerRuntimeResult`, or
+ * `null` if not present.
+ */
+WasmerRuntime_t *const *
+rune_result_WasmerRuntimeResult_get_ok(WasmerRuntimeResult_t const *result);
+
+/** \brief
+ * Get a reference to the `BoxedError` in this `WasmerRuntimeResult`, or `null`
+ * if not present.
+ */
+Error_t *const *
+rune_result_WasmerRuntimeResult_get_err(WasmerRuntimeResult_t const *result);
+
+/** \brief
+ * Extract the `BoxedWasmerRuntime`, freeing the `WasmerRuntimeResult` and
+ * crashing if it actually contains a `BoxedError`.
+ */
+WasmerRuntime_t *
+rune_result_WasmerRuntimeResult_take_ok(WasmerRuntimeResult_t *result);
+
+/** \brief
+ * Extract the `BoxedError`, freeing the `WasmerRuntimeResult` and crashing if
+ * it actually contains a `BoxedWasmerRuntime`.
+ */
+Error_t *
+rune_result_WasmerRuntimeResult_take_err(WasmerRuntimeResult_t *result);
+
+/** \brief
+ *  `&'lt [T]` but with a guaranteed `#[repr(C)]` layout.
+ *
+ *  # C layout (for some given type T)
+ *
+ *  ```c
+ *  typedef struct {
+ *      // Cannot be NULL
+ *      T * ptr;
+ *      size_t len;
+ *  } slice_T;
+ *  ```
+ *
+ *  # Nullable pointer?
+ *
+ *  If you want to support the above typedef, but where the `ptr` field is
+ *  allowed to be `NULL` (with the contents of `len` then being undefined)
+ *  use the `Option< slice_ptr<_> >` type.
+ */
+typedef struct {
+
+  uint8_t const *ptr;
+
+  size_t len;
+
+} slice_ref_uint8_t;
+
+/** \brief
+ *  Load a Rune backed by the provided image.
+ *
+ *  If loading is successful, `runtime_out` will be set to a new `WasmerRuntime`
+ *  instance, otherwise an error is returned.
+ */
+WasmerRuntimeResult_t *rune_wasmer_runtime_load(slice_ref_uint8_t rune,
+                                                RunicosBaseImage_t *image);
+
+/** \brief
+ *  Free a `WasmerRuntime` once you are done with it.
+ */
+void rune_wasmer_runtime_free(WasmerRuntime_t *runtime);
+
+/** \brief
+ *  Evaluate the Rune pipeline.
+ */
+RuneResult_t *rune_wasmer_runtime_call(WasmerRuntime_t *runtime);
+
+/** \brief
+ *  Construct a new error.
+ */
+Error_t *rune_error_new(char const *msg);
+
+/** \brief
+ *  Free the error once you are done with it.
+ */
+void rune_error_free(Error_t *e);
+
+/** \brief
+ *  Return a newly allocated string containing the error's backtrace.
+ */
+char *rune_error_backtrace(Error_t const *error);
+
+/** \brief
+ *  Return a newly allocated string describing the error.
+ */
+char *rune_error_to_string(Error_t const *error);
+
+/** \brief
+ *  Return a newly allocated string describing the error and any errors that
+ *  may have caused it.
+ *
+ *  This will also contain a backtrace if the `RUST_BACKTRACE` environment
+ *  variable is set.
+ */
+char *rune_error_to_string_verbose(Error_t const *error);
+
+/** \brief
+ * Check if the result contains a `u8`.
+ */
+bool rune_result_RuneResult_is_ok(RuneResult_t const *result);
+
+/** \brief
+ * Check if the result contains a `BoxedError`.
+ */
+bool rune_result_RuneResult_is_err(RuneResult_t const *result);
+
+/** \brief
+ * Free the `RuneResult` after you are done with it.
+ */
+void rune_result_RuneResult_free(RuneResult_t *result);
+
+/** \brief
+ * Get a reference to the `u8` in this `RuneResult`, or `null` if not present.
+ */
+uint8_t const *rune_result_RuneResult_get_ok(RuneResult_t const *result);
+
+/** \brief
+ * Get a reference to the `BoxedError` in this `RuneResult`, or `null` if not
+ * present.
+ */
+Error_t *const *rune_result_RuneResult_get_err(RuneResult_t const *result);
+
+/** \brief
+ * Extract the `u8`, freeing the `RuneResult` and crashing if it actually
+ * contains a `BoxedError`.
+ */
+uint8_t rune_result_RuneResult_take_ok(RuneResult_t *result);
+
+/** \brief
+ * Extract the `BoxedError`, freeing the `RuneResult` and crashing if it
+ * actually contains a `u8`.
+ */
+Error_t *rune_result_RuneResult_take_err(RuneResult_t *result);
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif

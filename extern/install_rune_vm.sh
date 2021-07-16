@@ -1,4 +1,4 @@
-git clone git@github.com:hotg-ai/rune_vm.git
+#git clone git@github.com:hotg-ai/rune_vm.git
 cd rune_vm
 git submodule update --init --recursive
 PROJECT_DIR=$(pwd)

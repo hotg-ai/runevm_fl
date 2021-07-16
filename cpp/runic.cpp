@@ -63,7 +63,8 @@ namespace {
         }
         
         [[nodiscard]] bool requestCapability(
-            const rune_vm::capabilities::Capability capability,
+                                             const rune_vm::TRuneId runeId,
+                                             const rune_vm::capabilities::Capability capability,
             const rune_vm::capabilities::TId newCapabilityId) noexcept final {
             m_log.log(
                 rune_vm::Severity::Info,
@@ -82,6 +83,7 @@ namespace {
         }
         
         [[nodiscard]] bool requestCapabilityParamChange(
+            const rune_vm::TRuneId runeId,
             const rune_vm::capabilities::TId capabilityId,
             const rune_vm::capabilities::TKey& key,
             const rune_vm::capabilities::Parameter& parameter) noexcept final {
@@ -98,6 +100,7 @@ namespace {
         }
         
         [[nodiscard]] bool requestRuneInputFromCapability(
+            const rune_vm::TRuneId runeId,
             const rune_vm::DataView<uint8_t> buffer,
             const rune_vm::capabilities::TId capabilityId) noexcept final {
             m_log.log(
