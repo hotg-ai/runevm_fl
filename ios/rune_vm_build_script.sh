@@ -12,7 +12,7 @@ export PATH_TO_TFLITE_FRAMEWORK="$PROJECT_DIR/TensorFlowLiteC.framework"
 cmake $RUNE_VM_PROJECT_DIR \
     -GXcode \
     -DRUNE_VM_BUILD_TESTS=OFF \
-    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=$RUNE_VM_INSTALL_DIR/install-$CONFIG_POSTFIX \
     -DCMAKE_TOOLCHAIN_FILE=$RUNE_VM_PROJECT_DIR/extern/polly/ios.cmake \
     -DRUNE_VM_TFLITE_EXTERNAL=ON \
@@ -21,7 +21,7 @@ cmake $RUNE_VM_PROJECT_DIR \
 
 # Build
 BUILD_WORKERS_COUNT=$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || getconf _NPROCESSORS_ONLN 2>/dev/null)
-cmake --build ./ --target rune_vm --config Debug --parallel $BUILD_WORKERS_COUNT
+cmake --build ./ --target rune_vm --config Release --parallel $BUILD_WORKERS_COUNT
 
 # Install
-cmake --build ./ --target install --config Debug --parallel $BUILD_WORKERS_COUNT
+cmake --build ./ --target install --config Release --parallel $BUILD_WORKERS_COUNT
