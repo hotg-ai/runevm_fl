@@ -44,10 +44,18 @@ namespace {
     struct AllInOneDelegate : public rune_vm::capabilities::IDelegate {
         AllInOneDelegate(const rune_vm::ILogger::CPtr& logger)
             : m_log(logger, "AllInOneDelegate")
-            , m_supportedCapabilities(g_supportedCapabilities.begin(), g_supportedCapabilities.end()) {}
+            , m_supportedCapabilities(g_supportedCapabilities.begin(), g_supportedCapabilities.end())
+            , m_currentSource(0){}
         
-        void setInput(const uint8_t* data, const uint32_t length) noexcept {
-            m_input = rune_vm::DataView<const uint8_t>(data, length);
+        void setInput(const std::vector<uint8_t*>& data, const std::vector<uint32_t>& lengths) noexcept {
+            if (data.size() != lengths.size()) {
+                return;
+            }
+
+            m_inputs.clear();
+            for(size_t i = 0; i < data.size(); i++) {
+                m_inputs.push_back(rune_vm::DataView<const uint8_t>(data[i], lengths[i]));
+            }
         }
         
     private:
@@ -94,8 +102,20 @@ namespace {
                     "requestCapabilityParamChange id={} key={}",
                     capabilityId,
                     key));
-            // TODO: check the param applicability based on the capability id
-            // TODO: actually use the param somehow
+
+            if(key == "source") {
+                // check if param type is expected
+                if(!std::holds_alternative<int32_t>(parameter.m_data))
+                    return false;
+
+                const auto& source = std::get<int32_t>(parameter.m_data);
+
+                if(source < 0 || source >= m_inputs.size())
+                    return false;
+
+                m_currentSource = source;
+                return true;
+            }
             return true;
         }
         
@@ -106,7 +126,7 @@ namespace {
             m_log.log(
                 rune_vm::Severity::Debug,
                 fmt::format("requestRuneInputFromCapability id={} buffer bytes length={}", capabilityId, buffer.m_size));
-            if(!m_input) {
+            if(m_currentSource < 0 ||m_currentSource >= m_inputs.size() || !m_inputs[m_currentSource]) {
                 m_log.log(rune_vm::Severity::Error, "No input for rune");
                 return false;
             }
@@ -118,19 +138,19 @@ namespace {
                 return false;
             }
 
-            if(buffer.m_size != m_input->m_size) {
+            if(buffer.m_size != m_inputs[m_currentSource]->m_size) {
                 m_log.log(
                     rune_vm::Severity::Error,
                     fmt::format(
                         "Trying to query input for capability id={}, buffer size invalid: expected={}, actual={}",
                         capabilityId,
-                        m_input->m_size,
+                        m_inputs[m_currentSource]->m_size,
                         buffer.m_size));
                 return false;
             }
 
-            std::memcpy(buffer.m_data, m_input->m_data, buffer.m_size);
-            m_input.reset();
+            std::memcpy(buffer.m_data, m_inputs[m_currentSource]->m_data, buffer.m_size);
+            m_inputs[m_currentSource].reset();
             
             return true;
         }
@@ -138,7 +158,8 @@ namespace {
         // data
         rune_vm::LoggingModule m_log;
         TCapabilitiesSet m_supportedCapabilities;
-        std::optional<rune_vm::DataView<const uint8_t>> m_input;
+        size_t m_currentSource;
+        std::vector<std::optional<rune_vm::DataView<const uint8_t>>> m_inputs;
     };
 
     struct RuneVmContext {
@@ -191,14 +212,14 @@ namespace {
         }
         
         // TODO: this is not really the right way to do things. Input should specify what capability it is for instead of being global. And there should be an option to set multiple inputs for multiple caps
-        rune_vm::IResult::Ptr callRune(const uint8_t* data, const uint32_t length) noexcept {
+        rune_vm::IResult::Ptr callRune(const std::vector<uint8_t*> &data, const std::vector<uint32_t> &length) noexcept {
             if(!m_rune) {
                 m_log.log(rune_vm::Severity::Error, "Failed to call rune: it's null");
                 return nullptr;
             }
             
             // length might be == 0 for sine rune, so don't check it
-            if(!data) {
+            if(data.size() == 0) {
                 m_log.log(rune_vm::Severity::Error, "Failed to call rune: input data is invalid");
                 return nullptr;
             }
@@ -323,8 +344,8 @@ std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, b
     }
 }
 
-std::optional<std::string> callRune(uint8_t *input, int input_length) noexcept {
-    g_context.log().log(rune_vm::Severity::Info, fmt::format("callRune called: input len={}", input_length));
+std::optional<std::string> callRune(const std::vector<uint8_t *>& input, const std::vector<uint32_t>& input_length) noexcept {
+    g_context.log().log(rune_vm::Severity::Info, fmt::format("callRune called: inputs={}", input_length.size()));
     
     const auto result = g_context.callRune(input, input_length);
     if(!result) {

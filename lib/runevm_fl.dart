@@ -15,8 +15,13 @@ class RunevmFl {
     return reply;
   }
 
-  static Future<String?> runRune(Uint8List input) async {
-    final String? result = await _channel.invokeMethod('runRune', input);
+  static Future<String?> runRune(Uint8List input,
+      [List<int> lengths = const []]) async {
+    if (lengths.length == 0) {
+      lengths = [input.length];
+    }
+    final String? result = await _channel
+        .invokeMethod('runRune', {"bytes": input, "lengths": lengths});
     return result;
   }
 }

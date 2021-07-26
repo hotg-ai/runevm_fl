@@ -23,12 +23,15 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
                 result(manifest)
         }
         else if call.method == "runRune" {
-            let uintInt8List =  call.arguments as! FlutterStandardTypedData
+            let args = call.arguments as! Dictionary<String, Any>
+            let uintInt8List =  args["bytes"] as! FlutterStandardTypedData
+            print(args["lengths"])
+            let sizes =  args["lengths"] as! [Int]
             
             //this is specific to accel
             
             let out =  [UInt8](uintInt8List.data)
-                let response = self.runRune(input: out)
+            let response = self.runRune(input: out, sizes: sizes)
                 result(response)
         }
         else {
@@ -37,9 +40,9 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
     //
   }
 
-    func runRune(input:[UInt8]) -> String {
-        let input_len = Int32(input.count)
-        guard let result = ObjcppBridge.callRunewithInput(input, ofLength: input_len) else {
+    func runRune(input:[UInt8], sizes:[Int]) -> String {
+
+        guard let result = ObjcppBridge.callRunewithInput(input, withLengths: sizes) else {
             return "error"
         }
         
