@@ -27,12 +27,16 @@
 
 + (NSString*)callRunewithInput: (const uint8_t *_Nonnull)input
                    withLengths: (NSArray*_Nonnull)lengths {
+    
+
+    
     std::vector<uint8_t *> input_vector;
     std::vector<uint32_t> input_length_vector;
     int i;
     int pos =0;
     for (i = 0; i < lengths.count; ++i)
     {
+        printf("######## Input %i first values [%i %i %i %i] with length %i\n",i,*(input+pos),*(input+pos+1),*(input+pos+2),*(input+pos+3),[lengths[i] intValue]);
         input_vector.push_back(reinterpret_cast<uint8_t*>(const_cast<uint8_t*>(input+pos)));
         input_length_vector.push_back((uint32_t)[lengths[i] intValue]);
         pos = pos + [lengths[i] intValue];

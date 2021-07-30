@@ -27,9 +27,7 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
             let uintInt8List =  args["bytes"] as! FlutterStandardTypedData
             print(args["lengths"])
             let sizes =  args["lengths"] as! [Int]
-            
-            //this is specific to accel
-            
+
             let out =  [UInt8](uintInt8List.data)
             let response = self.runRune(input: out, sizes: sizes)
                 result(response)
@@ -45,21 +43,20 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
         guard let result = ObjcppBridge.callRunewithInput(input, withLengths: sizes) else {
             return "error"
         }
-        
-        print("ObjcppBridge.callRunewithInput return result: " + result)
+
         return result
     }
-    
+
     func getManifest() -> [Any] {
         let bytes_len = Int32(bytes.count)
         guard let result = ObjcppBridge.loadManifest(withBytes: bytes, ofLength: bytes_len) else {
+            print("No Result!");
             return []
         }
-        
-        for cap in result {
-            print("ObjcppBridge.loadManifest returned capability: " + String(cap as! Int))
-        }
-        
+
+
+
+
         return result
     }
 }

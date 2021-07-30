@@ -123,9 +123,10 @@ namespace {
             const rune_vm::TRuneId runeId,
             const rune_vm::DataView<uint8_t> buffer,
             const rune_vm::capabilities::TId capabilityId) noexcept final {
+            m_currentSource = capabilityId -1;
             m_log.log(
                 rune_vm::Severity::Debug,
-                fmt::format("requestRuneInputFromCapability id={} buffer bytes length={}", capabilityId, buffer.m_size));
+                      fmt::format("requestRuneInputFromCapability id={} buffer bytes length={} {} {} {}", capabilityId, buffer.m_size,m_inputs.size(),m_currentSource, m_inputs[m_currentSource]->m_size));
             if(m_currentSource < 0 ||m_currentSource >= m_inputs.size() || !m_inputs[m_currentSource]) {
                 m_log.log(rune_vm::Severity::Error, "No input for rune");
                 return false;
@@ -298,7 +299,7 @@ std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, b
         g_context.log().log(rune_vm::Severity::Error, "Failed to load rune");
         return std::nullopt;
     }
-
+    printf("Rune loaded!!!!");
     try {
         const auto& capabilitiesDataMap = g_context.getCapabilityIdToDataMap();
 

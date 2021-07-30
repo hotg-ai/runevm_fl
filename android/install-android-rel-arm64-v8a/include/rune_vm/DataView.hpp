@@ -18,7 +18,7 @@ namespace rune_vm {
         DataView()
             : DataView(nullptr, 0) {}
 
-        auto& operator[](const size_t idx) const noexcept {
+        auto& operator[](const std::size_t idx) const noexcept {
             return m_data[idx];
         }
 
@@ -31,6 +31,32 @@ namespace rune_vm {
         }
 
         T* m_data;
+        TSize m_size;
+    };
+
+    template<typename T, typename TSize = uint32_t>
+    struct DoubleNestedDataView {
+        DoubleNestedDataView(DataView<T, TSize>* data, TSize size)
+            : m_data(data)
+            , m_size(size) {}
+
+        // for tuple instantiation
+        DoubleNestedDataView()
+            : DoubleNestedDataView(nullptr, 0) {}
+
+        auto& operator[](const std::size_t idx) const noexcept {
+            return m_data[idx];
+        }
+
+        auto begin() const noexcept {
+            return m_data;
+        }
+
+        auto end() const noexcept {
+            return m_data + m_size;
+        }
+
+        DataView<T, TSize> *m_data;
         TSize m_size;
     };
 }

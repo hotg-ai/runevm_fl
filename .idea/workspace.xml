@@ -23,13 +23,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/2048/home_mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/2048/home_mobile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/runic/audio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/example/lib/runic/audio.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/2048/home_mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/2048/home_mobile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/runic/audio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/runic/audio.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" beforeDir="false" afterPath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/cpp/jni.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/cpp/jni.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp/runic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp/runic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/cpp/jni.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/cpp/jni.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/cpp/runic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/cpp/runic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/extern/install_rune_vm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/extern/install_rune_vm.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/ObjcppBridge.mm" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/ObjcppBridge.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/SwiftRunevmFlPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/SwiftRunevmFlPlugin.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/include/rune_vm/DataView.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/lib/librune_vm.a" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/lib/librune_vm.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/rune_vm_build_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/rune_vm_build_script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extern/install_rune_vm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/extern/install_rune_vm.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/ObjcppBridge.mm" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/ObjcppBridge.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/SwiftRunevmFlPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/SwiftRunevmFlPlugin.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/install-ios-rel/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ios/install-ios-rel/include/rune_vm/DataView.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/install-ios-rel/lib/librune_vm.a" beforeDir="false" afterPath="$PROJECT_DIR$/ios/install-ios-rel/lib/librune_vm.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/rune_vm_build_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/rune_vm_build_script.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

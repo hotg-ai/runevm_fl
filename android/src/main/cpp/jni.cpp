@@ -10,31 +10,35 @@
 #include <android/log.h>
 #include <runic.hpp>
 
-namespace {
-    struct Deleter {
+namespace
+{
+    struct Deleter
+    {
         Deleter(JNIEnv *env, jbyteArray jdata)
-            : m_env(env)
-            , m_jdata(jdata) {}
+            : m_env(env), m_jdata(jdata) {}
 
-        void operator()(jbyte* ptr) const {
+        void operator()(jbyte *ptr) const
+        {
             m_env->ReleaseByteArrayElements(m_jdata, ptr, JNI_ABORT);
         }
 
     private:
-        JNIEnv* m_env;
+        JNIEnv *m_env;
         jbyteArray m_jdata;
     };
 
-    struct JByteArrayData {
-        JByteArrayData(std::unique_ptr<jbyte, Deleter>&& data, uint32_t size)
-            : m_data(std::move(data))
-            , m_size(size) {}
+    struct JByteArrayData
+    {
+        JByteArrayData(std::unique_ptr<jbyte, Deleter> &&data, uint32_t size)
+            : m_data(std::move(data)), m_size(size) {}
 
-        uint8_t* data() const noexcept {
-            return reinterpret_cast<uint8_t*>(m_data.get());
+        uint8_t *data() const noexcept
+        {
+            return reinterpret_cast<uint8_t *>(m_data.get());
         }
 
-        uint32_t size() const noexcept {
+        uint32_t size() const noexcept
+        {
             return m_size;
         }
 
@@ -43,38 +47,43 @@ namespace {
         uint32_t m_size;
     };
 
-    std::optional<JByteArrayData> getDataFromJArray(JNIEnv *env, jbyteArray jdata) {
+    std::optional<JByteArrayData> getDataFromJArray(JNIEnv *env, jbyteArray jdata)
+    {
         auto data = std::unique_ptr<jbyte, Deleter>(
             env->GetByteArrayElements(jdata, 0),
             Deleter(env, jdata));
-        if(!data)
+        if (!data)
             return std::nullopt;
 
         const auto size = env->GetArrayLength(jdata);
-        if(size < 0)
+        if (size < 0)
             return std::nullopt;
 
         return JByteArrayData(std::move(data), size);
     }
 
-    struct AndroidLogger: public rune_vm::ILogger {
+    struct AndroidLogger : public rune_vm::ILogger
+    {
     private:
         void log(
             const rune_vm::Severity severity,
-            const std::string& module,
-            const std::string& message) const noexcept {
-            const auto androidSeverity = [severity] {
-                switch(severity) {
-                    case rune_vm::Severity::Debug:
-                        return ANDROID_LOG_DEBUG;
-                    case rune_vm::Severity::Info:
-                        return ANDROID_LOG_INFO;
-                    case rune_vm::Severity::Warning:
-                        return ANDROID_LOG_WARN;
-                    case rune_vm::Severity::Error:
-                        return ANDROID_LOG_ERROR;
-                    default:
-                        return ANDROID_LOG_ERROR;
+            const std::string &module,
+            const std::string &message) const noexcept
+        {
+            const auto androidSeverity = [severity]
+            {
+                switch (severity)
+                {
+                case rune_vm::Severity::Debug:
+                    return ANDROID_LOG_DEBUG;
+                case rune_vm::Severity::Info:
+                    return ANDROID_LOG_INFO;
+                case rune_vm::Severity::Warning:
+                    return ANDROID_LOG_WARN;
+                case rune_vm::Severity::Error:
+                    return ANDROID_LOG_ERROR;
+                default:
+                    return ANDROID_LOG_ERROR;
                 }
             }();
 
@@ -83,47 +92,49 @@ namespace {
     };
 }
 
-
-extern "C" {
-JNIEXPORT jint JNICALL
-JNI_OnLoad(JavaVM* vm, void* reserved)
+extern "C"
 {
-    auto jniEnv = (JNIEnv*)nullptr;
+    JNIEXPORT jint JNICALL
+    JNI_OnLoad(JavaVM *vm, void *reserved)
+    {
+        auto jniEnv = (JNIEnv *)nullptr;
 
-    if (vm->GetEnv((void**)&jniEnv, JNI_VERSION_1_6) != JNI_OK) {
-        return JNI_ERR; // JNI version not supported
+        if (vm->GetEnv((void **)&jniEnv, JNI_VERSION_1_6) != JNI_OK)
+        {
+            return JNI_ERR; // JNI version not supported
+        }
+
+        // set logger
+        runic_common::setLogger(std::make_shared<AndroidLogger>());
+
+        return JNI_VERSION_1_6;
     }
 
-    // set logger
-    runic_common::setLogger(std::make_shared<AndroidLogger>());
+    JNIEXPORT jstring JNICALL
+    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_getManifest(JNIEnv *env, jobject thiz, jbyteArray wasm)
+    {
+        const auto optData = getDataFromJArray(env, wasm);
+        if (!optData)
+            return NULL;
 
-    return JNI_VERSION_1_6;
-}
+        const auto optJson = runic_common::manifest(optData->data(), optData->size(), true);
+        if (!optJson)
+            return NULL;
 
-JNIEXPORT jstring JNICALL
-Java_ai_hotg_runevm_1fl_RunevmFlPlugin_getManifest(JNIEnv *env, jobject thiz, jbyteArray wasm) {
-    const auto optData = getDataFromJArray(env, wasm);
-    if(!optData)
-        return NULL;
+        return env->NewStringUTF(optJson->c_str());
+    }
 
-    const auto optJson = runic_common::manifest(optData->data(), optData->size(), true);
-    if(!optJson)
-        return NULL;
+    JNIEXPORT jstring JNICALL
+    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_runRune(JNIEnv *env, jobject thiz, jbyteArray input)
+    {
+        const auto optData = getDataFromJArray(env, input);
+        if (!optData)
+            return NULL;
 
-    return env->NewStringUTF(optJson->c_str());
-}
+        const auto optJson = runic_common::callRune({optData->data()}, {optData->size()});
+        if (!optJson)
+            return NULL;
 
-JNIEXPORT jstring JNICALL
-Java_ai_hotg_runevm_1fl_RunevmFlPlugin_runRune(JNIEnv *env, jobject thiz, jbyteArray input) {
-    const auto optData = getDataFromJArray(env, input);
-    if(!optData)
-        return NULL;
-
-    const auto optJson = runic_common::callRune(optData->data(), optData->size());
-    if(!optJson)
-        return NULL;
-
-    return env->NewStringUTF(optJson->c_str());
-}
-
+        return env->NewStringUTF(optJson->c_str());
+    }
 }

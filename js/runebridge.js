@@ -6,7 +6,6 @@ class RuneBridge {
     #runtime;
     input;
     output;
-
     getUserMedia(parameters) {
         return navigator.getUserMedia(parameters) ||
             navigator.webkitGetUserMedia(parameters) ||
@@ -101,7 +100,7 @@ class RuneBridge {
         const model_name = "imagenet_mobilenet_v3";
         const portModel = false;
         if (portModel) {
-            //convert model from assets to runeformat 
+            //convert model from assets to runeformat
             console.log(model_name);
             this.model = await tf.loadGraphModel('/imagenet_mobilenet_v3/model.json');
             await this.model.save('indexeddb://' + model_name);
