@@ -15,7 +15,7 @@
 
 + ( NSArray* _Nullable )loadManifestWithBytes: (const uint8_t *_Nonnull)bytes
                                       ofLength:(int) len;
-+ (NSString*)callRunewithInput: (const uint8_t *_Nonnull)input
++ (NSString*_Nullable)callRunewithInput: (uint8_t *_Nonnull)input
                    withLengths: (NSArray*_Nonnull)lengths;
 
 + (float) floatFromBytes: (const uint8_t *_Nonnull) input;
