@@ -39,8 +39,7 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
   }
 
     func runRune(input:[UInt8], sizes:[Int]) -> String {
-        var inp = input;
-        guard let result = ObjcppBridge.callRunewithInput(UnsafeMutablePointer<UInt8>.init(&inp), withLengths: sizes) else {
+        guard let result = ObjcppBridge.callRunewithInput(input, withLengths: sizes) else {
             return "error"
         }
 

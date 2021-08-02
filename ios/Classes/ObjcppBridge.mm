@@ -25,7 +25,7 @@
     return array;
 }
 
-+ (NSString*)callRunewithInput: (uint8_t *_Nonnull)input
++ (NSString*)callRunewithInput: (const uint8_t *_Nonnull)input
                    withLengths: (NSArray*_Nonnull)lengths {
     
 
@@ -37,10 +37,7 @@
     for (i = 0; i < lengths.count; ++i)
     {
 
-        printf("######## Input %i first values [%i %i %i %i] with length %i\n",i,*(input+pos),*(input+pos+1),*(input+pos+2),*(input+pos+3),[lengths[i] intValue]);
-        input_vector.push_back((input+pos));
-        printf("######## Input vector %i first values [%i %i %i %i] with length %lu\n",i,*(input_vector.at(i)),*(input_vector.at(i)+1),*(input_vector.at(i)+2),*(input_vector.at(i)+3),input_vector.size());
-        
+        input_vector.push_back(reinterpret_cast<uint8_t*>(const_cast<uint8_t*>(input+pos)));
         input_length_vector.push_back((uint32_t)[lengths[i] intValue]);
         pos = pos + [lengths[i] intValue];
     }
