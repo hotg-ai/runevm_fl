@@ -125,13 +125,31 @@ extern "C"
     }
 
     JNIEXPORT jstring JNICALL
-    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_runRune(JNIEnv *env, jobject thiz, jbyteArray input)
+    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_runRune(JNIEnv *env, jobject /*thiz */, jbyteArray input, jintArray lengthsj)
     {
         const auto optData = getDataFromJArray(env, input);
         if (!optData)
             return NULL;
+        jsize size = env->GetArrayLength( lengthsj );
+        jint *lengths = env->GetIntArrayElements(lengthsj, 0);
 
-        const auto optJson = runic_common::callRune({optData->data()}, {optData->size()});
+        std::vector<uint8_t *> input_vector;
+        std::vector<uint32_t> input_length_vector;
+        int i;
+        int pos =0;
+        for (i = 0; i < size; ++i)
+        {
+            __android_log_print(ANDROID_LOG_DEBUG, "LOG_TAG", "########## length %lu %i",*lengths+i,i);
+            input_vector.push_back(reinterpret_cast<uint8_t*>(const_cast<uint8_t*>(optData->data()+pos)));
+            input_length_vector.push_back(*(lengths+i));
+            pos = pos + *(lengths+i);
+        }
+
+    
+        const auto optJson = runic_common::callRune(input_vector, input_length_vector );
+
+
+        //const auto optJson = runic_common::callRune({optData->data()}, {optData->size()});
         if (!optJson)
             return NULL;
 

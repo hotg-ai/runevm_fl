@@ -23,33 +23,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/bench/spbench/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/bench/spbench/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/cmake/language_support.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/cmake/language_support.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/doc/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/doc/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/unsupported/doc/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/unsupported/doc/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" beforeDir="false" afterPath="$PROJECT_DIR$/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/rune_vm_install_android.sh" beforeDir="false" afterPath="$PROJECT_DIR$/android/rune_vm_install_android.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/cpp/jni.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/cpp/jni.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp/runic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp/runic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/include/rune_vm/DataView.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/install-android-rel-arm64-v8a/lib/arm64-v8a/librune_vm.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/cpp/jni.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/android/src/main/cpp/jni.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/cpp/runic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/cpp/runic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/extern/install_rune_vm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/extern/install_rune_vm.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/ObjcppBridge.mm" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/ObjcppBridge.mm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/SwiftRunevmFlPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/Classes/SwiftRunevmFlPlugin.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/include/rune_vm/DataView.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/lib/librune_vm.a" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/install-ios-rel/lib/librune_vm.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/rune_vm_build_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/runevm_fl/ios/rune_vm_build_script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/ai/hotg/runevm_fl/RunevmFlPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/ai/hotg/runevm_fl/RunevmFlPlugin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extern/install_rune_vm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/extern/install_rune_vm.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/ObjcppBridge.mm" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/ObjcppBridge.mm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/SwiftRunevmFlPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/SwiftRunevmFlPlugin.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/install-ios-rel/include/rune_vm/DataView.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ios/install-ios-rel/include/rune_vm/DataView.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/install-ios-rel/lib/librune_vm.a" beforeDir="false" afterPath="$PROJECT_DIR$/ios/install-ios-rel/lib/librune_vm.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/rune_vm_build_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/rune_vm_build_script.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/Users/geerttrooskens/.android/avd/Pixel_3a_API_30_x86.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -60,6 +55,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />

@@ -56,7 +56,10 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
 
   private fun runRune(call: MethodCall, result:Result) {
     //runRune SDK functions
-    val runRuneResult = this.runRune(call.arguments as ByteArray)
+
+    val lengths = (call.argument<List<Int>>("lengths")!!).toIntArray();
+
+    val runRuneResult = this.runRune(call.argument<ByteArray>("bytes")!!,lengths);
     if(runRuneResult == null) {
       result.error("0", "Failed to run rune", null)
     }
@@ -70,5 +73,5 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
 
   //declare SDK functions
   private external fun getManifest(wasm: ByteArray): String?
-  private external fun runRune(input: ByteArray): String?
+  private external fun runRune(input: ByteArray, lengths: IntArray): String?
 }

@@ -9,7 +9,7 @@ ABI=arm64-v8a
 CONFIG_POSTFIX=android-rel-$ABI
 BUILD_DIR=build-$CONFIG_POSTFIX
 mkdir -p $BUILD_DIR && cd $BUILD_DIR
-NDK_PATH=/Users/geerttrooskens/dev/android-ndk-r21b
+NDK_PATH=/Users/geerttrooskens/dev/android-ndk-r21e
 cmake $PROJECT_DIR \
     -DTFLITE_C_BUILD_SHARED_LIBS=ON \
     -DRUNE_VM_BUILD_TESTS=OFF \
