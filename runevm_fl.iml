@@ -20,6 +20,9 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/shared_preferences/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/shared_preferences/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/shared_preferences/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/android/build-android-rel-arm64-v8a/flatbuffers/dart/build" />
+      <excludeFolder url="file://$MODULE_DIR$/android/build-android-rel-arm64-v8a/flatbuffers/dart/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/android/build-android-rel-arm64-v8a/flatbuffers/dart/.pub" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
