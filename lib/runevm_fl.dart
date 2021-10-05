@@ -6,8 +6,9 @@ class RunevmFl {
   static const MethodChannel _channel = const MethodChannel('runevm_fl');
 
   static Future<bool?> load(Uint8List bytes) async {
-    final bool? reply = await _channel.invokeMethod('loadWASM', bytes);
-    return reply;
+    print("invoking");
+    print(await _channel.invokeMethod('load', bytes));
+    return true;
   }
 
   static Future<dynamic> get manifest async {
@@ -15,13 +16,12 @@ class RunevmFl {
     return reply;
   }
 
-
-  static Future<String?> runRune(Uint8List input,
+  static Future<dynamic> runRune(Uint8List input,
       [List<int> lengths = const []]) async {
     if (lengths.length == 0) {
       lengths = [input.length];
     }
-    final String? result = await _channel
+    final dynamic result = await _channel
         .invokeMethod('runRune', {"bytes": input, "lengths": lengths});
     return result;
   }

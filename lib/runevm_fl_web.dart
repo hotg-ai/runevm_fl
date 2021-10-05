@@ -1,15 +1,30 @@
 import 'dart:async';
-// In order to *not* need this ignore, consider extracting the "web" version
-// of your plugin as a separate package, instead of inlining it in the same
-// package as the core of your plugin.
-// ignore: avoid_web_libraries_in_flutter
+import 'dart:convert';
 import 'dart:html' as html show window;
-
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:inject_js/inject_js.dart' as JS;
+import 'package:runevm_fl/rune.dart';
+import 'dart:js_util';
 
 /// A web implementation of the RunevmFl plugin.
 class RunevmFlWeb {
+  static bool bridgeLoaded = false;
+
+  static loadWebBindings() async {
+    if (bridgeLoaded == false) {
+      try {
+        String script =
+            await rootBundle.loadString('packages/runevm_fl/assets/bridge.js');
+        JS.injectScript(script);
+        bridgeLoaded = true;
+      } catch (e) {
+        print("Exception $e while loading bridge");
+        bridgeLoaded = false;
+      }
+    }
+  }
+
   static void registerWith(Registrar registrar) {
     final MethodChannel channel = MethodChannel(
       'runevm_fl',
@@ -22,23 +37,27 @@ class RunevmFlWeb {
   }
 
   /// Handles method calls over the MethodChannel of this plugin.
-  /// Note: Check the "federated" architecture for a new way of doing this:
-  /// https://flutter.dev/go/federated-plugins
-  ///
+
   /// Returning dummy values for now
-  Future<dynamic> handleMethodCall(MethodCall call) async {
-    print("calling ${call.method}");
-    switch (call.method) {
+  dynamic manifest = [];
+
+  Future<dynamic> handleMethodCall(MethodCall dCall) async {
+    await loadWebBindings();
+
+    switch (dCall.method) {
       case 'load':
+        manifest = await promiseToFuture(load(dCall.arguments));
         return true;
-      case 'manifest':
-        return [2];
+      case 'getManifest':
+        return manifest;
       case 'runRune':
-        return '{"type_name":"&str","channel":0,"string":"yes"}';
+        print("dcall ${dCall.arguments["lengths"]}");
+        return await promiseToFuture(
+            call(dCall.arguments["bytes"], dCall.arguments["lengths"]));
       default:
         throw PlatformException(
           code: 'Unimplemented',
-          details: 'runevm_fl for web doesn\'t implement \'${call.method}\'',
+          details: 'runevm_fl for web doesn\'t implement \'${dCall.method}\'',
         );
     }
   }
