@@ -12,7 +12,7 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        if call.method == "loadWASM" {
+        if call.method == "load" {
             let uintInt8List =  call.arguments as! FlutterStandardTypedData
 
             self.bytes = [UInt8](uintInt8List.data)

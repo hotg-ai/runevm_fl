@@ -23,10 +23,10 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "loadWASM") {
+    if (call.method == "load") {
       val wasmBytes = call.arguments as ByteArray
       println(wasmBytes.size)
-      loadWASM(call, result, wasmBytes)
+      load(call, result, wasmBytes)
     }
     if (call.method == "getManifest") {
       getManifest(call, result)
@@ -40,7 +40,7 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
     System.loadLibrary("rune_vm_loader")
   }
 
-  private fun loadWASM(call: MethodCall, result:Result, bytes: ByteArray) {
+  private fun load(call: MethodCall, result:Result, bytes: ByteArray) {
     wasmBytes = bytes;
     return result.success(true) ;
   }

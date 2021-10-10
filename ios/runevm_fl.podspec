@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
   # Flutter.framework does not contain a i386 slice.
   s.vendored_libraries = 'install-ios-rel/lib/*.a'
   s.vendored_frameworks = 'TensorFlowLiteC.framework'
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'ENABLE_BITCODE' => 'NO' }
   s.swift_version = '5.0'
 end
