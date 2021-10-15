@@ -1,5 +1,5 @@
 name: runevm_fl
-version: 0.1.4
+version: 0.2.0
 description: >-
   Rune Virtual Machine for Flutter
   Containerization for TinyML/Mobile Applications on Tiny/Mobile devices.
@@ -11,6 +11,7 @@ environment:
   flutter: ">=1.20.0"
 
 dependencies:
+  inject_js: ^2.0.0
   flutter:
     sdk: flutter
   flutter_web_plugins:
@@ -42,9 +43,8 @@ flutter:
         fileName: runevm_fl_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - packages/runevm_fl/assets/bridge.js
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages

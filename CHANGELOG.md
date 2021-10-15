@@ -1,3 +1,7 @@
+## 0.2.0
+
+Updated runevm C++ library with support for multiple inputs/outputs
+
 ## 0.1.4
 
 Updated manifest function to include parameters

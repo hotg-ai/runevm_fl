@@ -12,7 +12,7 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        if call.method == "loadWASM" {
+        if call.method == "load" {
             let uintInt8List =  call.arguments as! FlutterStandardTypedData
 
             self.bytes = [UInt8](uintInt8List.data)
@@ -23,12 +23,13 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
                 result(manifest)
         }
         else if call.method == "runRune" {
-            let uintInt8List =  call.arguments as! FlutterStandardTypedData
-            
-            //this is specific to accel
-            
+            let args = call.arguments as! Dictionary<String, Any>
+            let uintInt8List =  args["bytes"] as! FlutterStandardTypedData
+            print(args["lengths"])
+            let sizes =  args["lengths"] as! [Int]
+
             let out =  [UInt8](uintInt8List.data)
-                let response = self.runRune(input: out)
+            let response = self.runRune(input: out, sizes: sizes)
                 result(response)
         }
         else {
@@ -37,26 +38,24 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
     //
   }
 
-    func runRune(input:[UInt8]) -> String {
-        let input_len = Int32(input.count)
-        guard let result = ObjcppBridge.callRunewithInput(input, ofLength: input_len) else {
+    func runRune(input:[UInt8], sizes:[Int]) -> String {
+        guard let result = ObjcppBridge.callRunewithInput(input, withLengths: sizes) else {
             return "error"
         }
-        
-        print("ObjcppBridge.callRunewithInput return result: " + result)
+
         return result
     }
-    
+
     func getManifest() -> [Any] {
         let bytes_len = Int32(bytes.count)
         guard let result = ObjcppBridge.loadManifest(withBytes: bytes, ofLength: bytes_len) else {
+            print("No Result!");
             return []
         }
-        
-        for cap in result {
-            print("ObjcppBridge.loadManifest returned capability: " + String(cap as! Int))
-        }
-        
+
+
+
+
         return result
     }
 }

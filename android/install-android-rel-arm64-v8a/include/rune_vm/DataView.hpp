@@ -18,7 +18,7 @@ namespace rune_vm {
         DataView()
             : DataView(nullptr, 0) {}
 
-        auto& operator[](const size_t idx) const noexcept {
+        auto& operator[](const std::size_t idx) const noexcept {
             return m_data[idx];
         }
 

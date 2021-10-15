@@ -44,6 +44,7 @@ namespace rune_vm {
     };
 
     struct IRune : VirtualInterface<IRune> {
+        [[nodiscard]] virtual TRuneId id() const noexcept = 0;
         [[nodiscard]] virtual capabilities::IContext::Ptr getCapabilitiesContext() const noexcept = 0;
         [[nodiscard]] virtual IResult::Ptr call() = 0;
     };

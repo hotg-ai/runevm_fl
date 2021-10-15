@@ -23,10 +23,10 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "loadWASM") {
+    if (call.method == "load") {
       val wasmBytes = call.arguments as ByteArray
       println(wasmBytes.size)
-      loadWASM(call, result, wasmBytes)
+      load(call, result, wasmBytes)
     }
     if (call.method == "getManifest") {
       getManifest(call, result)
@@ -40,7 +40,7 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
     System.loadLibrary("rune_vm_loader")
   }
 
-  private fun loadWASM(call: MethodCall, result:Result, bytes: ByteArray) {
+  private fun load(call: MethodCall, result:Result, bytes: ByteArray) {
     wasmBytes = bytes;
     return result.success(true) ;
   }
@@ -56,7 +56,10 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
 
   private fun runRune(call: MethodCall, result:Result) {
     //runRune SDK functions
-    val runRuneResult = this.runRune(call.arguments as ByteArray)
+
+    val lengths = (call.argument<List<Int>>("lengths")!!).toIntArray();
+
+    val runRuneResult = this.runRune(call.argument<ByteArray>("bytes")!!,lengths);
     if(runRuneResult == null) {
       result.error("0", "Failed to run rune", null)
     }
@@ -70,5 +73,5 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
 
   //declare SDK functions
   private external fun getManifest(wasm: ByteArray): String?
-  private external fun runRune(input: ByteArray): String?
+  private external fun runRune(input: ByteArray, lengths: IntArray): String?
 }
