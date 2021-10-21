@@ -17,14 +17,14 @@ class RunevmFl {
   static const MethodChannel _channel = const MethodChannel('runevm_fl');
 
   static Future<bool?> load(Uint8List bytes) async {
-    print("invoking");
-    print(await _channel.invokeMethod('load', bytes));
+    await _channel.invokeMethod('load', bytes);
+
     return true;
   }
 
   static Future<dynamic> get manifest async {
+    print("getManifest>>>>");
     dynamic reply = await _channel.invokeMethod('getManifest');
-
     if (!kIsWeb) {
       if (Platform.isIOS) {
         reply = utf8.decode(List<int>.from(reply));

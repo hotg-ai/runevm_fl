@@ -16,45 +16,55 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   private lateinit var channel : MethodChannel
+  var isLibraryLoaded = false;
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "runevm_fl")
     channel.setMethodCallHandler(this)
+    if(!isLibraryLoaded) {
+      System.loadLibrary("rune_vm_loader");
+      isLibraryLoaded = true;
+    }
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    println("##### method call ${call.method}");
     if (call.method == "load") {
       val wasmBytes = call.arguments as ByteArray
       println(wasmBytes.size)
       load(call, result, wasmBytes)
     }
     if (call.method == "getManifest") {
-      getManifest(call, result)
+      manifest(call, result)
+      //manifest(call, result)
     }
     if (call.method == "runRune") {
-      runRune(call, result)
+      run(call, result)
     }
   }
 
   init {
-    System.loadLibrary("rune_vm_loader")
+    
   }
 
   private fun load(call: MethodCall, result:Result, bytes: ByteArray) {
+    println("load >>>");
     wasmBytes = bytes;
     return result.success(true) ;
   }
 
-  private fun getManifest(call: MethodCall, result:Result) {
-    val getManifestResult = this.getManifest(wasmBytes);
+  private fun manifest(call: MethodCall, result:Result) {
+    println("getting manifest >>>");
+    val getManifestResult = getManifest(wasmBytes);
+    println("ok manifest");
     if(getManifestResult == null) {
       result.error("0", "Failed to get manifest", null)
     }
-
+  
     return result.success(getManifestResult!!)
   }
 
-  private fun runRune(call: MethodCall, result:Result) {
+  private fun run(call: MethodCall, result:Result) {
     //runRune SDK functions
 
     val lengths = (call.argument<List<Int>>("lengths")!!).toIntArray();
