@@ -38,6 +38,11 @@ namespace runic_common
 
     // set logger resets everything. if you don't set it, stdout logger will be used
     bool setLogger(rune_vm::ILogger::Ptr logger) noexcept;
+
+    
+
     std::optional<std::string> manifest(const uint8_t *app_rune, int app_rune_len, bool newManifest) noexcept;
     std::optional<std::string> callRune(const std::vector<uint8_t *> &input, const std::vector<uint32_t> &input_length) noexcept;
 }
+
+std::vector<std::string> getLogs() noexcept;

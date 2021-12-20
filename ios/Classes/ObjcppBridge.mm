@@ -12,6 +12,18 @@
 
 @implementation ObjcppBridge
 
++ (NSArray*)getLogs {
+    std::vector<std::string> logs = getLogs();
+    
+    
+    auto *array = [[NSMutableArray alloc] init];
+    for(std::string log: logs)
+        [array addObject:[NSString stringWithCString:log.c_str()
+                                            encoding:[NSString defaultCStringEncoding]]];
+    
+    return array;
+}
+
 + (NSArray*)loadManifestWithBytes: (const uint8_t *)bytes
                           ofLength:(int) len {
     const auto optCapabilities = runic_common::manifest(bytes, len, true);

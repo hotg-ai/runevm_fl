@@ -22,8 +22,25 @@ class RunevmFl {
     return true;
   }
 
+  static Future<List<dynamic>> getLogs() async {
+    if (!kIsWeb) {
+      if (Platform.isIOS) {
+        List<dynamic> reply = await _channel.invokeMethod('getLogs');
+        return reply;
+      } else {
+        String reply = await _channel.invokeMethod('getLogs');
+        List<String> splittedReply = reply.split("\n");
+        if (splittedReply.length > 0) {
+          splittedReply.removeLast();
+        }
+
+        return splittedReply;
+      }
+    }
+    return [];
+  }
+
   static Future<dynamic> get manifest async {
-    print("getManifest>>>>");
     dynamic reply = await _channel.invokeMethod('getManifest');
     if (!kIsWeb) {
       if (Platform.isIOS) {

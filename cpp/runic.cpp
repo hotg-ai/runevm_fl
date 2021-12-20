@@ -9,8 +9,10 @@
 #include <string>
 #include <unordered_set>
 #include <iostream>
+#include <iomanip>
 #include <thread>
 #include <vector>
+
 
 #include <fmt/format.h>
 #include <nlohmann/json.hpp>
@@ -31,13 +33,26 @@ struct fmt::formatter<rune_vm::capabilities::Parameter> : fmt::formatter<std::st
     }
 };
 
+static std::vector<std::string> logs;
+
+std::vector<std::string> getLogs() noexcept {
+    return logs;
+}
+
+
 namespace {
+    
+
     struct StdoutLogger : public rune_vm::ILogger {
+        
+        
+        
         void log(
             const rune_vm::Severity severity,
             const std::string& module,
             const std::string& message) const noexcept final {
-            std::cout << fmt::format("{}@[{}]: {}\n", rune_vm::severityToString(severity), module, message);
+                logs.push_back(fmt::format("{}@@{}@@{}\n", rune_vm::severityToString(severity), module, message));
+                std::cout << fmt::format(" {}@[{}]: {}\n", rune_vm::severityToString(severity), module, message);
         }
     };
 
@@ -281,6 +296,8 @@ namespace {
 
 namespace runic_common {
 
+
+
 bool setLogger(rune_vm::ILogger::Ptr logger) noexcept {
     return resetContext(std::move(logger));
 }
@@ -299,7 +316,6 @@ std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, b
         g_context.log().log(rune_vm::Severity::Error, "Failed to load rune");
         return std::nullopt;
     }
-    printf("Rune loaded!!!!");
     try {
         const auto& capabilitiesDataMap = g_context.getCapabilityIdToDataMap();
 
@@ -346,6 +362,7 @@ std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, b
 }
 
 std::optional<std::string> callRune(const std::vector<uint8_t *>& input, const std::vector<uint32_t>& input_length) noexcept {
+
     g_context.log().log(rune_vm::Severity::Info, fmt::format("callRune called: inputs={}", input_length.size()));
     
     const auto result = g_context.callRune(input, input_length);

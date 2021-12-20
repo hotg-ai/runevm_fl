@@ -41,6 +41,9 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
     if (call.method == "runRune") {
       run(call, result)
     }
+    if (call.method == "getLogs") {
+      logs(call, result)
+    }
   }
 
   init {
@@ -51,6 +54,17 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
     println("load >>>");
     wasmBytes = bytes;
     return result.success(true) ;
+  }
+
+  private fun logs(call: MethodCall, result:Result) {
+    println("getting logs >>>");
+    val logsResult = getLogs();
+    println(logsResult);
+    if(logsResult == null) {
+      result.error("0", "Failed to get manifest", null)
+    }
+  
+    return result.success(logsResult!!)
   }
 
   private fun manifest(call: MethodCall, result:Result) {
@@ -82,6 +96,7 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   //declare SDK functions
+  private external fun getLogs(): String?
   private external fun getManifest(wasm: ByteArray): String?
   private external fun runRune(input: ByteArray, lengths: IntArray): String?
 }
