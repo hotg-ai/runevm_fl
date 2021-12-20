@@ -17,14 +17,31 @@ class RunevmFl {
   static const MethodChannel _channel = const MethodChannel('runevm_fl');
 
   static Future<bool?> load(Uint8List bytes) async {
-    print("invoking");
-    print(await _channel.invokeMethod('load', bytes));
+    await _channel.invokeMethod('load', bytes);
+
     return true;
+  }
+
+  static Future<List<dynamic>> getLogs() async {
+    if (!kIsWeb) {
+      if (Platform.isIOS) {
+        List<dynamic> reply = await _channel.invokeMethod('getLogs');
+        return reply;
+      } else {
+        String reply = await _channel.invokeMethod('getLogs');
+        List<String> splittedReply = reply.split("\n");
+        if (splittedReply.length > 0) {
+          splittedReply.removeLast();
+        }
+
+        return splittedReply;
+      }
+    }
+    return [];
   }
 
   static Future<dynamic> get manifest async {
     dynamic reply = await _channel.invokeMethod('getManifest');
-
     if (!kIsWeb) {
       if (Platform.isIOS) {
         reply = utf8.decode(List<int>.from(reply));

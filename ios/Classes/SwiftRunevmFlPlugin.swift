@@ -22,6 +22,10 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
                 let manifest = self.getManifest()
                 result(manifest)
         }
+        else if call.method == "getLogs" {
+                let logs = self.getLogs()
+                result(logs)
+        }
         else if call.method == "runRune" {
             let args = call.arguments as! Dictionary<String, Any>
             let uintInt8List =  args["bytes"] as! FlutterStandardTypedData
@@ -42,6 +46,19 @@ public class SwiftRunevmFlPlugin: NSObject, FlutterPlugin {
         guard let result = ObjcppBridge.callRunewithInput(input, withLengths: sizes) else {
             return "error"
         }
+
+        return result
+    }
+
+    func getLogs() -> [Any] {
+        let bytes_len = Int32(bytes.count)
+        guard let result = ObjcppBridge.getLogs() else {
+            print("No Result!");
+            return []
+        }
+
+
+
 
         return result
     }

@@ -105,9 +105,21 @@ extern "C"
         }
 
         // set logger
-        runic_common::setLogger(std::make_shared<AndroidLogger>());
+        //runic_common::setLogger(std::make_shared<AndroidLogger>());
 
         return JNI_VERSION_1_6;
+    }
+
+    JNIEXPORT jstring JNICALL
+    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_getLogs(JNIEnv *env, jobject /*thiz */)
+    {
+        const std::vector<std::string> logString = getLogs();
+
+        std::string s;
+        for (std::vector<std::string>::const_iterator i = logString.begin(); i != logString.end(); ++i) {
+            s += *i;
+        }
+        return env->NewStringUTF(s.c_str());
     }
 
     JNIEXPORT jstring JNICALL
