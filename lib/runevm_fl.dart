@@ -36,8 +36,10 @@ class RunevmFl {
 
         return splittedReply;
       }
+    } else {
+      List<dynamic> reply = await _channel.invokeMethod('getLogs');
+      return reply;
     }
-    return [];
   }
 
   static Future<dynamic> get manifest async {

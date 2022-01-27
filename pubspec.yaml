@@ -1,5 +1,5 @@
 name: runevm_fl
-version: 0.2.0
+version: 0.3.0
 description: >-
   Rune Virtual Machine for Flutter
   Containerization for TinyML/Mobile Applications on Tiny/Mobile devices.
@@ -16,6 +16,7 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:
