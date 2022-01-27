@@ -54,6 +54,8 @@ class RunevmFlWeb {
         print("dcall ${dCall.arguments["lengths"]}");
         return await promiseToFuture(
             call(dCall.arguments["bytes"], dCall.arguments["lengths"]));
+      case 'getLogs':
+        return await promiseToFuture(getLogs());
       default:
         throw PlatformException(
           code: 'Unimplemented',
