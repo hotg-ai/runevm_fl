@@ -1,3 +1,11 @@
+## 0.3.0-hotfix.1
+
+Updated Readme
+
+## 0.3.0
+
+Forge deployment implementation
+
 ## 0.2.0
 
 Updated runevm C++ library with support for multiple inputs/outputs

@@ -1,7 +1,7 @@
 name: runevm_fl
-version: 0.3.0
+version: 0.3.0-hotfix.1
 description: >-
-  Rune Virtual Machine for Flutter
+  Rune Bindings and Forge deployment for Flutter
   Containerization for TinyML/Mobile Applications on Tiny/Mobile devices.
 homepage: https://hotg.dev
 repository: https://github.com/hotg-ai/runevm_fl
@@ -12,6 +12,7 @@ environment:
 
 dependencies:
   inject_js: ^2.0.0
+  js: ^0.6.3
   flutter:
     sdk: flutter
   flutter_web_plugins:
