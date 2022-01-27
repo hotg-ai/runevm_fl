@@ -11,7 +11,7 @@
 dependencies:
   flutter:
     sdk: flutter
-  runevm_fl: ^0.1.2
+  runevm_fl: ^0.3.0
 
 ```
 
@@ -32,7 +32,7 @@ Future<dynamic> RunevmFl.manifest
 Future<String> RunevmFl.runRune(Uint8List input)
 ```
 
-#### Implementation
+#### Rune Bindings Implementation
 
 Full implementation in [main.dart](example/lib/main.dart)
 
@@ -84,6 +84,42 @@ class RunMyRune {
 
 ```
 
+#### Forge Deployment Implementation
+
+First step is to initialise Forge and deploy model
+
+```dart
+
+import 'package:runevm_fl/runevm_fl.dart';
+
+void loadForge() async {
+  final answer = await Forge.forge({
+    "deploymentId": "26", //insert  deploymentId here
+    "apiKey": "{apiKey from forge}", //insert  apiKey here
+    "baseURL": "https://dev-forge.hotg.ai", //insert  url here
+    "telemetry": {
+      "baseURL": "https://dev-telemetry.hotg.ai", //insert  url here
+    }
+  });
+  setState(() {
+    _capabilities = answer;
+  });
+}
+
+```
+
+To run inference imply provide to output to Forge.predict(Uint8List input)
+```dart
+
+  void _runInference() async {
+    Uint8List inputData = getInputData();
+    final data = await Forge.predict([inputData]);
+    final out = (data is String) ? json.decode(data) : data;
+    doSomethingWithOutput(out);
+  }
+
+```
+
 ### Android
 
 No extra config needed
@@ -101,7 +137,7 @@ Minimum iOS version should be at least 12.1 to be compatible with the plugin:
 Set this in XCode > Runner > General > Deployment info
 
 
-Bitcode needs to be disabled either for the runevm_fl target:
+For version <0.3.0 Bitcode needs to be disabled either for the runevm_fl  target:
 
 XCode > Pods > Targets > runevm_fl > Build Settings > Enable Bitcode > Set to 'No'
 
