@@ -1,5 +1,5 @@
 name: runevm_fl
-version: 0.3.0-hotfix.1
+version: 0.3.1
 description: >-
   Rune Bindings and Forge deployment for Flutter
   Containerization for TinyML/Mobile Applications on Tiny/Mobile devices.

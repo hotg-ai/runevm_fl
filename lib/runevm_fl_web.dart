@@ -18,6 +18,7 @@ class RunevmFlWeb {
             await rootBundle.loadString('packages/runevm_fl/assets/bridge.js');
         JS.injectScript(script);
         bridgeLoaded = true;
+        print("Bridge is loaded");
       } catch (e) {
         print("Exception $e while loading bridge");
         bridgeLoaded = false;

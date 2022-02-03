@@ -1,3 +1,8 @@
+## 0.3.1
+
+New web bindings
+Support for tf.js models
+
 ## 0.3.0-hotfix.1
 
 Updated Readme
