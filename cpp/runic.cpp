@@ -89,9 +89,6 @@ namespace {
                                              const rune_vm::TRuneId runeId,
                                              const rune_vm::capabilities::Capability capability,
             const rune_vm::capabilities::TId newCapabilityId) noexcept final {
-            m_log.log(
-                rune_vm::Severity::Info,
-                fmt::format("requestCapability capability={} id={}", capability, newCapabilityId));
             if(m_supportedCapabilities.count(capability) == 0) {
                 m_log.log(
                     rune_vm::Severity::Error,
@@ -110,13 +107,7 @@ namespace {
             const rune_vm::capabilities::TId capabilityId,
             const rune_vm::capabilities::TKey& key,
             const rune_vm::capabilities::Parameter& parameter) noexcept final {
-            // TODO: print param
-            m_log.log(
-                rune_vm::Severity::Info,
-                fmt::format(
-                    "requestCapabilityParamChange id={} key={}",
-                    capabilityId,
-                    key));
+
 
             if(key == "source") {
                 // check if param type is expected
@@ -303,8 +294,7 @@ bool setLogger(rune_vm::ILogger::Ptr logger) noexcept {
 }
 
 std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, bool) noexcept {
-    g_context.log().log(rune_vm::Severity::Info, fmt::format("manifest called: rune len={}", app_rune_len));
-    
+    logs.clear();
     // reset context to avoid wasm3 internal state errors
     if(!resetContext(g_context.log().logger())) {
         g_context.log().log(rune_vm::Severity::Info, "manifest: failed to reset context");
@@ -362,7 +352,7 @@ std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, b
 }
 
 std::optional<std::string> callRune(const std::vector<uint8_t *>& input, const std::vector<uint32_t>& input_length) noexcept {
-
+    logs.clear();
     g_context.log().log(rune_vm::Severity::Info, fmt::format("callRune called: inputs={}", input_length.size()));
     
     const auto result = g_context.callRune(input, input_length);
