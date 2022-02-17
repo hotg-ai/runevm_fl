@@ -65,7 +65,7 @@ class RunevmFl {
       }
       return manifest;
     }
-    return jsonDecode(reply);
+    return jsonDecode("$reply");
   }
 
   static Future<dynamic> runRune(Uint8List input,
