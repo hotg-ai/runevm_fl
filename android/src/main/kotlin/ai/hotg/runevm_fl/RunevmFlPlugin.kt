@@ -51,15 +51,12 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   private fun load(call: MethodCall, result:Result, bytes: ByteArray) {
-    println("load >>>");
     wasmBytes = bytes;
     return result.success(true) ;
   }
 
   private fun logs(call: MethodCall, result:Result) {
-    println("getting logs >>>");
     val logsResult = getLogs();
-    println(logsResult);
     if(logsResult == null) {
       result.error("0", "Failed to get manifest", null)
     }

@@ -44,8 +44,7 @@ namespace rune_vm {
     class LoggingModule {
     public:
         LoggingModule(const ILogger::CPtr& logger, const std::string& module);
-        static std::vector<std::string> logs;
-        
+
         void log(const Severity severity, const std::string& message) const noexcept;
 
         const ILogger::CPtr& logger() const noexcept;

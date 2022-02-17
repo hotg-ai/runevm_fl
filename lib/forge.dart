@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:runevm_fl/backend/backend.dart';
 import 'package:runevm_fl/runevm_fl.dart';
+import 'backend/telemetry_backend.dart';
 
 class Forge {
   static int? deploymentId;
@@ -10,6 +11,7 @@ class Forge {
   static String? telemetryURL;
   static dynamic manifest;
   static bool loaded = false;
+  static TelemetryBackend telemetry = TelemetryBackend.noopTelemetryBackend();
 
   static Future<dynamic> forge(Map<String, dynamic> parameters) async {
     print("Loading forge $parameters");

@@ -89,9 +89,6 @@ namespace {
                                              const rune_vm::TRuneId runeId,
                                              const rune_vm::capabilities::Capability capability,
             const rune_vm::capabilities::TId newCapabilityId) noexcept final {
-            m_log.log(
-                rune_vm::Severity::Info,
-                fmt::format("requestCapability capability={} id={}", capability, newCapabilityId));
             if(m_supportedCapabilities.count(capability) == 0) {
                 m_log.log(
                     rune_vm::Severity::Error,
@@ -99,9 +96,7 @@ namespace {
                 return false;
             }
             
-            m_log.log(
-                rune_vm::Severity::Info,
-                fmt::format("New capability={} allocated with id={}", capability, newCapabilityId));
+
             return true;
         }
         
@@ -110,13 +105,7 @@ namespace {
             const rune_vm::capabilities::TId capabilityId,
             const rune_vm::capabilities::TKey& key,
             const rune_vm::capabilities::Parameter& parameter) noexcept final {
-            // TODO: print param
-            m_log.log(
-                rune_vm::Severity::Info,
-                fmt::format(
-                    "requestCapabilityParamChange id={} key={}",
-                    capabilityId,
-                    key));
+
 
             if(key == "source") {
                 // check if param type is expected
@@ -139,9 +128,6 @@ namespace {
             const rune_vm::DataView<uint8_t> buffer,
             const rune_vm::capabilities::TId capabilityId) noexcept final {
             m_currentSource = capabilityId -1;
-            m_log.log(
-                rune_vm::Severity::Debug,
-                      fmt::format("requestRuneInputFromCapability id={} buffer bytes length={} {} {} {}", capabilityId, buffer.m_size,m_inputs.size(),m_currentSource, m_inputs[m_currentSource]->m_size));
             if(m_currentSource < 0 ||m_currentSource >= m_inputs.size() || !m_inputs[m_currentSource]) {
                 m_log.log(rune_vm::Severity::Error, "No input for rune");
                 return false;
@@ -274,7 +260,6 @@ namespace {
 
     // this is done to not fight with strange internal state errors
     bool resetContext(rune_vm::ILogger::CPtr logger) noexcept {
-        g_context.log().log(rune_vm::Severity::Info, "Resetting rune_vm context");
         if(!logger) {
             g_context.log().log(rune_vm::Severity::Error, "resetContext: null logger was passed");
             return false;
@@ -303,11 +288,9 @@ bool setLogger(rune_vm::ILogger::Ptr logger) noexcept {
 }
 
 std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, bool) noexcept {
-    g_context.log().log(rune_vm::Severity::Info, fmt::format("manifest called: rune len={}", app_rune_len));
-    
+    logs.clear();
     // reset context to avoid wasm3 internal state errors
     if(!resetContext(g_context.log().logger())) {
-        g_context.log().log(rune_vm::Severity::Info, "manifest: failed to reset context");
         return std::nullopt;
     }
     
@@ -350,7 +333,6 @@ std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, b
             });
 
         const auto jsonStr = json.dump();
-        g_context.log().log(rune_vm::Severity::Info, fmt::format("manifest() output={}", jsonStr));
 
         return jsonStr;
     } catch(const std::exception& e) {
@@ -362,8 +344,7 @@ std::optional<std::string> manifest(const uint8_t* app_rune, int app_rune_len, b
 }
 
 std::optional<std::string> callRune(const std::vector<uint8_t *>& input, const std::vector<uint32_t>& input_length) noexcept {
-
-    g_context.log().log(rune_vm::Severity::Info, fmt::format("callRune called: inputs={}", input_length.size()));
+    logs.clear();
     
     const auto result = g_context.callRune(input, input_length);
     if(!result) {
