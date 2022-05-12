@@ -18,14 +18,13 @@ Pod::Spec.new do |s|
   s.platform = :ios, '12.1'
   s.public_header_files = 'Classes/**/*.h'
   s.xcconfig = { 
-    'LIBRARY_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/install-ios-rel/lib/"', 
-    'HEADER_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/install-ios-rel/include/" "${PODS_TARGET_SRCROOT}/../extern/fmt/include/" "${PODS_TARGET_SRCROOT}/../extern" "${PODS_TARGET_SRCROOT}/../cpp/" ',
+    'LIBRARY_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/ios/install-ios-rel/lib/"', 
+    'HEADER_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/ios/install-ios-rel/include/" "${PODS_TARGET_SRCROOT}/ios/Classes/"',
     'CLANG_CXX_LANGUAGE_STANDARD' => 'c++17',
     'CLANG_CXX_LIBRARY' => 'libc++'
   }
   # Flutter.framework does not contain a i386 slice.
   s.vendored_libraries = 'install-ios-rel/lib/*.a'
-  s.vendored_frameworks = 'TensorFlowLiteC.framework'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'ENABLE_BITCODE' => 'NO' }
   s.swift_version = '5.0'
 end

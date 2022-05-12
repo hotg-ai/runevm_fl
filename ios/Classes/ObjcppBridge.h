@@ -13,14 +13,14 @@
 
 @interface ObjcppBridge : NSObject
 
-+ ( NSArray* _Nullable )getLogs;
++ (NSString *_Nullable)loadManifestWithBytes:(const uint8_t *_Nonnull)bytes
+                                    ofLength:(int)len;
++ (NSString *_Nullable)callRune;
 
-+ ( NSArray* _Nullable )loadManifestWithBytes: (const uint8_t *_Nonnull)bytes
-                                      ofLength:(int) len;
-+ (NSString*_Nullable)callRunewithInput: (const uint8_t *_Nonnull)input
-                   withLengths: (NSArray*_Nonnull)lengths;
++ (NSString *_Nullable)getLogs;
 
-+ (float) floatFromBytes: (const uint8_t *_Nonnull) input;
++ (void)addInputTensor:(int)node_id input:(NSData *)data type:(int)type dimensions:(NSArray *)dimensions;
+
++ (float)floatFromBytes:(const uint8_t *_Nonnull)input;
 
 @end
-

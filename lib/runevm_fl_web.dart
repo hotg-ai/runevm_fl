@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:inject_js/inject_js.dart' as JS;
 import 'package:runevm_fl/rune.dart';
+import 'package:runevm_fl/audio_helper.dart';
 import 'dart:js_util';
 
 /// A web implementation of the RunevmFl plugin.
@@ -52,11 +53,14 @@ class RunevmFlWeb {
       case 'getManifest':
         return manifest;
       case 'runRune':
-        print("dcall ${dCall.arguments["lengths"]}");
         return await promiseToFuture(
             call(dCall.arguments["bytes"], dCall.arguments["lengths"]));
       case 'getLogs':
         return await promiseToFuture(getLogs());
+      case 'initMic':
+        return await promiseToFuture(initMic());
+      case 'decode':
+        return await promiseToFuture(decode(dCall.arguments["milliseconds"]));
       default:
         throw PlatformException(
           code: 'Unimplemented',
