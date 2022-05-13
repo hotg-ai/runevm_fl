@@ -5,6 +5,19 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
+enum TensorType {
+  U8,
+  I8,
+  U16,
+  I16,
+  U32,
+  I32,
+  F32,
+  U64,
+  I64,
+  F64,
+}
+
 const capabilitiesDefinitionString = {
   "RANDOM": "RandCapability",
   "SOUND": "AudioCapability",
@@ -20,6 +33,55 @@ const capabilitiesDefinition = {
   4: "ImageCapability",
   5: "RawCapability"
 };
+
+class Tensor {
+  int id;
+  Uint8List? bytes;
+  List<int> dimensions;
+  TensorType type;
+  Tensor(dynamic data, this.dimensions, this.type, this.id) {
+    this.bytes =
+        Uint8List.view(data.buffer, data.offsetInBytes, data.lengthInBytes);
+  }
+
+  get data {
+    if (bytes == null) {
+      return null;
+    }
+    if (type == TensorType.U8) {
+      return Uint8List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.I8) {
+      return Int8List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.U16) {
+      return Uint16List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.I16) {
+      return Uint16List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.F32) {
+      return Float32List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.U32) {
+      return Uint32List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.I32) {
+      return Int32List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.F64) {
+      return Float64List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.U64) {
+      return Uint64List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    } else if (type == TensorType.I64) {
+      return Int64List.view(
+          bytes!.buffer, bytes!.offsetInBytes, bytes!.lengthInBytes);
+    }
+    return null;
+  }
+}
 
 class RunevmFl {
   static const MethodChannel _channel = const MethodChannel('runevm_fl');
@@ -62,7 +124,8 @@ class RunevmFl {
       List manifest = [];
       for (dynamic element in capabilities) {
         Map<String, dynamic> cap = {
-          "type": capabilitiesDefinitionString[element["kind"]]
+          "type": capabilitiesDefinitionString[element["kind"]],
+          "id": int.parse("${element["id"]}")
         };
         for (dynamic param in element["args"].keys) {
           cap[param] = int.tryParse("${element["args"][param]}");
@@ -80,13 +143,12 @@ class RunevmFl {
     return result;
   }
 
-  static Future<dynamic> addInputTensor(
-      int nodeId, Uint8List input, int type, List<int> dimensions) async {
+  static Future<dynamic> addInputTensor(Tensor input) async {
     final dynamic result = await _channel.invokeMethod('addInputTensor', {
-      "nodeID": nodeId,
-      "bytes": input,
-      "type": type,
-      "dimensions": dimensions
+      "nodeID": input.id,
+      "bytes": input.bytes,
+      "type": input.type.index,
+      "dimensions": input.dimensions
     });
     return result;
   }
