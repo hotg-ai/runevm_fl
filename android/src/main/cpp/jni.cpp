@@ -7,9 +7,11 @@
 
 #include <memory>
 #include <jni.h>
+#include <optional>
 #include <android/log.h>
-#include <runic.hpp>
-
+#include <rune.hpp>
+#include <runetime.cpp>
+#include <vector>
 namespace
 {
     struct Deleter
@@ -62,38 +64,31 @@ namespace
         return JByteArrayData(std::move(data), size);
     }
 
-    struct AndroidLogger : public rune_vm::ILogger
-    {
-    private:
-        void log(
-            const rune_vm::Severity severity,
-            const std::string &module,
-            const std::string &message) const noexcept
-        {
-            const auto androidSeverity = [severity]
-            {
-                switch (severity)
-                {
-                case rune_vm::Severity::Debug:
-                    return ANDROID_LOG_DEBUG;
-                case rune_vm::Severity::Info:
-                    return ANDROID_LOG_INFO;
-                case rune_vm::Severity::Warning:
-                    return ANDROID_LOG_WARN;
-                case rune_vm::Severity::Error:
-                    return ANDROID_LOG_ERROR;
-                default:
-                    return ANDROID_LOG_ERROR;
-                }
-            }();
-
-            __android_log_print(androidSeverity, module.c_str(), "%s", message.c_str());
-        }
-    };
 }
 
 extern "C"
 {
+
+    Runetime runetime;
+    std::string logs = "";
+    void logger(void *user_data, const char *msg, int len)
+    {
+        __android_log_print(ANDROID_LOG_DEBUG, "LOG_TAG", "[Rune Logger] %s", msg);
+        if (logs.length() > 0)
+        {
+            logs = logs + ",";
+        }
+        const std::string_view text{reinterpret_cast<const char *>(msg), static_cast<size_t>(len)};
+        logs = logs + std::string{text};
+    }
+
+    JNIEXPORT jstring JNICALL
+    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_getLogs(JNIEnv *env, jobject thiz)
+    {
+        std::string log_output = "[" + logs + "]";
+        logs = "";
+        return env->NewStringUTF(log_output.c_str());
+    }
     JNIEXPORT jint JNICALL
     JNI_OnLoad(JavaVM *vm, void *reserved)
     {
@@ -104,67 +99,49 @@ extern "C"
             return JNI_ERR; // JNI version not supported
         }
 
-        // set logger
-        //runic_common::setLogger(std::make_shared<AndroidLogger>());
+        runetime.logger = &logger;
 
         return JNI_VERSION_1_6;
     }
 
     JNIEXPORT jstring JNICALL
-    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_getLogs(JNIEnv *env, jobject /*thiz */)
-    {
-        const std::vector<std::string> logString = getLogs();
-
-        std::string s;
-        for (std::vector<std::string>::const_iterator i = logString.begin(); i != logString.end(); ++i) {
-            s += *i;
-        }
-        return env->NewStringUTF(s.c_str());
-    }
-
-    JNIEXPORT jstring JNICALL
     Java_ai_hotg_runevm_1fl_RunevmFlPlugin_getManifest(JNIEnv *env, jobject thiz, jbyteArray wasm)
     {
+
         const auto optData = getDataFromJArray(env, wasm);
         if (!optData)
             return NULL;
 
-        const auto optJson = runic_common::manifest(optData->data(), optData->size(), true);
-        if (!optJson)
-            return NULL;
+        struct rune::Config cfg = {
+            .rune = optData->data(),
+            .rune_len = (int)optData->size(),
+        };
 
-        return env->NewStringUTF(optJson->c_str());
+        std::string result = runetime.load(cfg);
+
+        return env->NewStringUTF(result.c_str());
+    }
+
+    JNIEXPORT jboolean JNICALL
+    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_addInputTensor(JNIEnv *env, jobject thiz, jint node_id, jbyteArray input, jint type, jintArray dimensions, jint rank)
+    {
+
+        const auto bytesArray = getDataFromJArray(env, input);
+        if (!bytesArray)
+            return NULL;
+        const uint8_t *bytes = bytesArray->data();
+        jint length = bytesArray->size();
+        jint *dimensionsArray = env->GetIntArrayElements(dimensions, 0);
+        runetime.addInputTensor(node_id, bytesArray->data(), length, (uint32_t *)dimensionsArray, rank, type);
+        return true;
     }
 
     JNIEXPORT jstring JNICALL
-    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_runRune(JNIEnv *env, jobject /*thiz */, jbyteArray input, jintArray lengthsj)
+    Java_ai_hotg_runevm_1fl_RunevmFlPlugin_runRune(JNIEnv *env, jobject thiz)
     {
-        const auto optData = getDataFromJArray(env, input);
-        if (!optData)
-            return NULL;
-        jsize size = env->GetArrayLength( lengthsj );
-        jint *lengths = env->GetIntArrayElements(lengthsj, 0);
+        std::string result = runetime.run();
+        __android_log_print(ANDROID_LOG_DEBUG, "LOG_TAG", "INFERENCE OUTPUT %s", result.c_str());
 
-        std::vector<uint8_t *> input_vector;
-        std::vector<uint32_t> input_length_vector;
-        int i;
-        int pos =0;
-        for (i = 0; i < size; ++i)
-        {
-            __android_log_print(ANDROID_LOG_DEBUG, "LOG_TAG", "########## length %lu %i",*lengths+i,i);
-            input_vector.push_back(reinterpret_cast<uint8_t*>(const_cast<uint8_t*>(optData->data()+pos)));
-            input_length_vector.push_back(*(lengths+i));
-            pos = pos + *(lengths+i);
-        }
-
-    
-        const auto optJson = runic_common::callRune(input_vector, input_length_vector );
-
-
-        //const auto optJson = runic_common::callRune({optData->data()}, {optData->size()});
-        if (!optJson)
-            return NULL;
-
-        return env->NewStringUTF(optJson->c_str());
+        return env->NewStringUTF(result.c_str());
     }
 }

@@ -46,18 +46,10 @@ class Forge {
     return manifest;
   }
 
-  static Future<dynamic>? predict(List<Uint8List> inputData) {
-    if (inputData.length == 1) {
-      return RunevmFl.runRune(inputData[0]);
-    } else {
-      List<int> inputs = [];
-      List<int> lengths = [];
-      for (Uint8List input in inputData) {
-        inputs.addAll(input);
-        lengths.add(input.length);
-        return RunevmFl.runRune(new Uint8List.fromList(inputs), lengths);
-      }
+  static Future<dynamic>? predict(List<Tensor> inputTensors) {
+    for (Tensor inputTensor in inputTensors) {
+      RunevmFl.addInputTensor(inputTensor);
     }
-    return null;
+    return RunevmFl.runRune();
   }
 }

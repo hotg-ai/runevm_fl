@@ -41,6 +41,9 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
     if (call.method == "runRune") {
       run(call, result)
     }
+    if (call.method == "addInputTensor") {
+      addInput(call, result)
+    }
     if (call.method == "getLogs") {
       logs(call, result)
     }
@@ -65,9 +68,8 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   private fun manifest(call: MethodCall, result:Result) {
-    println("getting manifest >>>");
     val getManifestResult = getManifest(wasmBytes);
-    println("ok manifest");
+
     if(getManifestResult == null) {
       result.error("0", "Failed to get manifest", null)
     }
@@ -77,16 +79,30 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
 
   private fun run(call: MethodCall, result:Result) {
     //runRune SDK functions
-
-    val lengths = (call.argument<List<Int>>("lengths")!!).toIntArray();
-
-    val runRuneResult = this.runRune(call.argument<ByteArray>("bytes")!!,lengths);
+    val runRuneResult = this.runRune();
     if(runRuneResult == null) {
       result.error("0", "Failed to run rune", null)
     }
 
     return result.success(runRuneResult!!)
   }
+
+  private fun addInput(call: MethodCall, result:Result) {
+    //runRune SDK functions
+    println(call.argument<Int>("nodeID")!!);
+    val nodeID = call.argument<Int>("nodeID")!!;
+    val bytes = call.argument<ByteArray>("bytes")!!;
+    val type = call.argument<Int>("type")!!;
+    val dimensions = (call.argument<List<Int>>("dimensions")!!).toIntArray();
+
+    val addInputResult = this.addInputTensor(nodeID,bytes,type,dimensions,dimensions.size);
+    if(addInputResult == null) {
+      result.error("0", "Failed to addInput", null)
+    }
+
+    return result.success("")
+  }
+
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
@@ -95,5 +111,6 @@ class RunevmFlPlugin: FlutterPlugin, MethodCallHandler {
   //declare SDK functions
   private external fun getLogs(): String?
   private external fun getManifest(wasm: ByteArray): String?
-  private external fun runRune(input: ByteArray, lengths: IntArray): String?
+  private external fun addInputTensor(node_id: Int, input: ByteArray, type: Int, dimensions: IntArray, rank: Int );
+  private external fun runRune(): String?
 }

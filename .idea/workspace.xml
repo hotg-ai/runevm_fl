@@ -22,17 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rune_vm_loader.dir/Users/geerttrooskens/dev/hotg/runevm_fl/cpp/runic.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.cxx/cmake/release/arm64-v8a/CMakeFiles/rune_vm_loader.dir/Users/geerttrooskens/dev/hotg/runevm_fl/cpp/runic.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/bench/spbench/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/bench/spbench/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/cmake/language_support.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/cmake/language_support.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/doc/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/doc/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/unsupported/doc/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build-android-rel-arm64-v8a/eigen/unsupported/doc/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runevm_fl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/runevm_fl.iml" afterDir="false" />
-    </list>
+    <list default="true" id="987677d7-e1a1-4fa8-af9a-291a9a633ec7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
